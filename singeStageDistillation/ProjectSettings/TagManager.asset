@@ -41,3 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Liquid
+    uniqueID: 441811219
+    locked: 0
+  - name: Droplets
+    uniqueID: 3265158645
+    locked: 0
