@@ -6,6 +6,9 @@ public class ZoomInZoomOut : MonoBehaviour
 {
     Camera mainCamera;
 
+    Vector3 originalCameraPosition;
+    float originalCameraZoom; 
+
     Vector3 touchStart;
     public float zoomOutMin = 1.01f;
     public float zoomOutMax = 9.01f;
@@ -20,6 +23,8 @@ public class ZoomInZoomOut : MonoBehaviour
     void Start()
     {
         mainCamera = this.GetComponent<Camera>();
+        originalCameraPosition = transform.position;
+        originalCameraZoom = mainCamera.orthographicSize; 
     }
 
     // Update is called once per frame
@@ -80,5 +85,11 @@ public class ZoomInZoomOut : MonoBehaviour
     void zoom(float increment)
     {
         Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize - increment, zoomOutMin, zoomOutMax);
+    }
+
+    public void setOriginalPosition()
+    {
+        mainCamera.orthographicSize = originalCameraZoom;
+        transform.position = originalCameraPosition; 
     }
 }

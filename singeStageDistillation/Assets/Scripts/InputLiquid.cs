@@ -10,6 +10,16 @@ public class InputLiquid : MonoBehaviour
     private float liquidLevel = 2f;
 
     Renderer renderLiquid;
+
+    //Boiling Liquid
+    public float rimValue = 0f;
+    public float rimPowerValue = 0.5f;
+    public float changeRimValue = 0.001f;
+    public float changeRimPowerValue = 0.01f;
+    bool boilLiquid = false; 
+    bool increasinFoamLine = true;
+    bool increasinRimLine = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +53,58 @@ public class InputLiquid : MonoBehaviour
             }
         }
         renderLiquid.material.SetFloat("_FillAmount", liquidLevel);
+
+        if (boilLiquid)
+        {
+            //Boiling Liquid
+            renderLiquid.material.SetFloat("_RimPower", rimPowerValue);
+            renderLiquid.material.SetFloat("_Rim", rimValue);
+            if (increasinRimLine)
+            {
+                if (rimPowerValue < 1.5f)
+                {
+                    rimPowerValue = rimPowerValue + (changeRimPowerValue);
+                }
+                else
+                {
+                    increasinRimLine = false;
+                }
+            }
+            else
+            {
+                if (rimPowerValue > 0.5f)
+                {
+                    rimPowerValue = rimPowerValue - (changeRimPowerValue);
+                }
+                else
+                {
+                    increasinRimLine = true;
+                }
+            }
+            if (increasinFoamLine)
+            {
+                if (rimValue < 0.1f)
+                {
+                    rimValue = rimValue + (changeRimValue);
+                }
+                else
+                {
+                    increasinFoamLine = false;
+                }
+            }
+            else
+            {
+                if (rimValue > 0f)
+                {
+                    rimValue = rimValue - (changeRimValue);
+                }
+                else
+                {
+                    increasinFoamLine = true;
+                }
+            }
+
+        }    
     }
 
     public void FillInputLiquid()
@@ -58,5 +120,10 @@ public class InputLiquid : MonoBehaviour
             emptyLiquid = true; 
             inputLiquidFilled = false;
         }
+    }
+
+    public void BoilLiquid(bool _boilLiquid)
+    {
+        boilLiquid = _boilLiquid; 
     }
 }

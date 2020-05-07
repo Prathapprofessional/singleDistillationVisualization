@@ -10,7 +10,8 @@ public class ControlAnimation : MonoBehaviour
     public ParticleSystem vapourVesselParticleSystem;
     public ParticleSystem vapourVesselTopParticleSystem;
     public ParticleSystem bubblesParticleSystem;
-    public OutputLiquid outputLiquid; 
+    public OutputLiquid outputLiquid;
+    public InputLiquid inputLiquid;
 
     public Renderer renderInputLiquid;
     public Renderer renderOutputLiquid;
@@ -39,6 +40,8 @@ public class ControlAnimation : MonoBehaviour
             vapourVesselShader.material.SetColor("_TintColor", Color.blue);
             vapourVesselTopShader.material.SetColor("_TintColor", Color.blue);
 
+            CancelInvoke("playBoiling");
+            inputLiquid.BoilLiquid(false);
             CancelInvoke("playBubbles");
             CancelInvoke("playVapourVessel");
             CancelInvoke("playVapourVesselTop");
@@ -57,13 +60,19 @@ public class ControlAnimation : MonoBehaviour
         {
             flameOn = true;
             flameParticleSystem.Play();
-            Invoke("playBubbles", 3);
+            Invoke("playBoiling", 3);
+            Invoke("playBubbles", 4);
             Invoke("playVapourVessel", 6);
             Invoke("playVapourVesselTop", 9);
             Invoke("playDroplets", 12);
             Invoke("startOutputLiquidAnimation", 13);
             Invoke("changeColour", 25);
         }       
+    }
+
+    void playBoiling()
+    {
+        inputLiquid.BoilLiquid(true); 
     }
 
     void playBubbles()
