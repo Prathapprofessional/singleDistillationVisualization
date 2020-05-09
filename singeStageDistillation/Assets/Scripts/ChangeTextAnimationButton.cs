@@ -5,8 +5,12 @@ using UnityEngine.UI;
 
 public class ChangeTextAnimationButton : MonoBehaviour
 {
-    public Text buttonText; 
+    public Text buttonText;
+    public string original;
+    public string opposite;
+
     private bool start = true; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,11 +26,11 @@ public class ChangeTextAnimationButton : MonoBehaviour
     public void changeText()
     {
         if (start){
-            buttonText.text = "Stop Animation"; 
+            buttonText.text = opposite; 
             start = false; 
         }else
         {
-            buttonText.text = "Start Animation";
+            buttonText.text = original;
             start = true; 
         }
     }

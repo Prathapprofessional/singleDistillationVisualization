@@ -5,18 +5,23 @@ using UnityEngine;
 public class ControlAnimation : MonoBehaviour
 {
     private bool flameOn = false;
+
     public ParticleSystem flameParticleSystem;
     public ParticleSystem dropletParticleSystem;
     public ParticleSystem vapourVesselParticleSystem;
     public ParticleSystem vapourVesselTopParticleSystem;
+    public ParticleSystem vapourVesselCondenserParticleSystem;
     public ParticleSystem bubblesParticleSystem;
-    public OutputLiquid outputLiquid;
-    public InputLiquid inputLiquid;
 
-    public Renderer renderInputLiquid;
-    public Renderer renderOutputLiquid;
     public Renderer vapourVesselShader;
     public Renderer vapourVesselTopShader;
+    public Renderer vapourVesselCondenserShader;
+    public Renderer dropletShader;
+    public Renderer splashShader;
+
+    public OutputLiquid outputLiquid;
+    public InputLiquid inputLiquid;
+    public ProcessDetail processDetail; 
 
     // Start is called before the first frame update
     void Start()
@@ -34,25 +39,30 @@ public class ControlAnimation : MonoBehaviour
     {
         if (flameOn)
         {
+            processDetail.setAllDetailsBlank(); 
+            inputLiquid.changeTexture("blue");
+            outputLiquid.changeTexture("blue");
+            vapourVesselShader.material.SetColor("_TintColor", Color.green);
+            vapourVesselTopShader.material.SetColor("_TintColor", Color.green);
+            vapourVesselCondenserShader.material.SetColor("_TintColor", Color.green);
+            dropletShader.material.SetColor("_TintColor", Color.green);
+            splashShader.material.SetColor("_TintColor", Color.green);
 
-            renderInputLiquid.material.SetColor("_Tint", Color.blue);
-            renderOutputLiquid.material.SetColor("_Tint", Color.green);
-            vapourVesselShader.material.SetColor("_TintColor", Color.blue);
-            vapourVesselTopShader.material.SetColor("_TintColor", Color.blue);
-
-            CancelInvoke("playBoiling");
+            CancelInvoke("Heating");
             inputLiquid.BoilLiquid(false);
-            CancelInvoke("playBubbles");
-            CancelInvoke("playVapourVessel");
-            CancelInvoke("playVapourVesselTop");
-            CancelInvoke("playDroplets");
+            CancelInvoke("Boiling");
+            CancelInvoke("Vapourization");
+            CancelInvoke("VapourMoving");
+            CancelInvoke("Condensation");
+            CancelInvoke("EthanolFlowing");
             CancelInvoke("startOutputLiquidAnimation");
-            CancelInvoke("changeColour");
+            CancelInvoke("MethanolFlowing");
 
             flameParticleSystem.Stop();
             dropletParticleSystem.Stop();
             vapourVesselParticleSystem.Stop();
             vapourVesselTopParticleSystem.Stop();
+            vapourVesselCondenserParticleSystem.Stop();
             bubblesParticleSystem.Stop();
             flameOn = false;
         }
@@ -60,37 +70,89 @@ public class ControlAnimation : MonoBehaviour
         {
             flameOn = true;
             flameParticleSystem.Play();
-            Invoke("playBoiling", 3);
-            Invoke("playBubbles", 4);
-            Invoke("playVapourVessel", 6);
-            Invoke("playVapourVesselTop", 9);
-            Invoke("playDroplets", 12);
-            Invoke("startOutputLiquidAnimation", 13);
-            Invoke("changeColour", 25);
+            processDetail.setInputLiquidName("White Wine"); 
+            StartCoroutine(startProcessAt("010", 3f, "Heating"));
         }       
     }
 
-    void playBoiling()
+    IEnumerator startProcessAt(string time, float timeToWait, string processName)
+    {
+        yield return new WaitForSeconds(timeToWait);
+
+        if (flameOn)
+        {
+            processDetail.setTime(time, processName);
+
+            switch (processName)
+            {
+                case "Heating":
+                    Invoke("Heating", 1);
+                    StartCoroutine(startProcessAt("015", 6f, "Boiling"));
+                    break;
+                case "Boiling":
+                    Invoke("Boiling", 1);
+                    StartCoroutine(startProcessAt("020", 6f, "Vapourization"));
+                    break;
+                case "Vapourization":
+                    Invoke("Vapourization", 1);
+                    StartCoroutine(startProcessAt("030", 6f, "VapourMoving"));
+                    break;
+                case "VapourMoving":
+                    Invoke("VapourMoving", 1);
+                    Invoke("ReduceInputLiquid", 2); 
+                    StartCoroutine(startProcessAt("035", 6f, "Condensation"));
+                    break;
+                case "Condensation":
+                    Invoke("Condensation", 1);
+                    StartCoroutine(startProcessAt("040", 6f, "EthanolFlowing"));
+                    break;
+                case "EthanolFlowing":
+                    Invoke("EthanolFlowing", 1);
+                    Invoke("startOutputLiquidAnimation", 2);
+                    StartCoroutine(startProcessAt("080", 10f, "MethanolFlowing"));
+                    break;
+                case "MethanolFlowing":
+                    Invoke("emptyOutputLiquidCompletely", 1);
+                    Invoke("MethanolFlowing", 1);
+                    StartCoroutine(startProcessAt("150", 5f, ""));
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    void Heating()
     {
         inputLiquid.BoilLiquid(true); 
     }
 
-    void playBubbles()
+    void Boiling()
     {
         bubblesParticleSystem.Play(); 
     }
 
-    void playVapourVessel()
+    void Vapourization()
     {
         vapourVesselParticleSystem.Play();
     }
 
-    void playVapourVesselTop()
+    void ReduceInputLiquid()
+    {
+        inputLiquid.StartReducingLiquid(); 
+    }
+
+    void VapourMoving()
     {
         vapourVesselTopParticleSystem.Play();
     }
 
-    void playDroplets()
+    void Condensation()
+    {
+        vapourVesselCondenserParticleSystem.Play();
+    }
+
+    void EthanolFlowing()
     {
         dropletParticleSystem.Play();
     }
@@ -100,11 +162,19 @@ public class ControlAnimation : MonoBehaviour
         outputLiquid.FillOutputLiquid(); 
     }
 
-    void changeColour()
+    void emptyOutputLiquidCompletely()
     {
-        renderInputLiquid.material.SetColor("_Tint", Color.red);
-        renderOutputLiquid.material.SetColor("_Tint", Color.magenta);
+        outputLiquid.EmptyOutCompletely();
+    }
+
+    void MethanolFlowing()
+    {
+        inputLiquid.changeTexture("red"); 
+        outputLiquid.changeTexture("red");
         vapourVesselShader.material.SetColor("_TintColor", Color.red);
         vapourVesselTopShader.material.SetColor("_TintColor", Color.red);
+        vapourVesselCondenserShader.material.SetColor("_TintColor", Color.red);
+        dropletShader.material.SetColor("_TintColor", Color.red);
+        splashShader.material.SetColor("_TintColor", Color.red);
     }
 }

@@ -7,6 +7,7 @@ public class InputLiquid : MonoBehaviour
     private bool inputLiquidFilled = false;
     private bool fillLiquid = false;
     private bool emptyLiquid = false;
+    private bool reduceLiquid = false;
     private float liquidLevel = 2f;
 
     Renderer renderLiquid;
@@ -20,6 +21,9 @@ public class InputLiquid : MonoBehaviour
     bool increasinFoamLine = true;
     bool increasinRimLine = true;
 
+    public Texture blueTexture;
+    public Texture redTexture;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +33,7 @@ public class InputLiquid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (fillLiquid)
+        if (fillLiquid && !reduceLiquid)
         {
             if(liquidLevel < 0.2f)
             {
@@ -50,6 +54,18 @@ public class InputLiquid : MonoBehaviour
             else
             {
                 liquidLevel += 0.01f;
+            }
+        }
+
+        if(reduceLiquid)
+        {
+            if (liquidLevel > 2f)
+            {
+                emptyLiquid = false;
+            }
+            else
+            {
+                liquidLevel += 0.00015f;
             }
         }
         renderLiquid.material.SetFloat("_FillAmount", liquidLevel);
@@ -116,6 +132,7 @@ public class InputLiquid : MonoBehaviour
             inputLiquidFilled = true; 
         }else
         {
+            reduceLiquid = false; 
             fillLiquid = false; 
             emptyLiquid = true; 
             inputLiquidFilled = false;
@@ -125,5 +142,22 @@ public class InputLiquid : MonoBehaviour
     public void BoilLiquid(bool _boilLiquid)
     {
         boilLiquid = _boilLiquid; 
+    }
+
+    public void changeTexture(string textureName)
+    {
+        if(textureName == "blue")
+        {
+            renderLiquid.material.SetTexture("_MainTex", blueTexture);
+        }else if(textureName == "red")
+        {
+            renderLiquid.material.SetTexture("_MainTex", redTexture);
+        }
+        
+    }
+
+    public void StartReducingLiquid()
+    {
+        reduceLiquid = true; 
     }
 }

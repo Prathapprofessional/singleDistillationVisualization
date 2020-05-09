@@ -10,6 +10,9 @@ public class OutputLiquid : MonoBehaviour
     private float liquidLevel = 1f;
 
     Renderer renderLiquid;
+    public Texture blueTexture;
+    public Texture redTexture;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +30,7 @@ public class OutputLiquid : MonoBehaviour
             }
             else
             {
-                liquidLevel -= 0.0008f;
+                liquidLevel -= 0.001f;
             }
         }
 
@@ -69,5 +72,23 @@ public class OutputLiquid : MonoBehaviour
             emptyLiquid = true;
             outputLiquidFilled = false;
         }
+    }
+
+    public void EmptyOutCompletely()
+    {
+        liquidLevel = 1f; 
+    }
+
+    public void changeTexture(string textureName)
+    {
+        if (textureName == "blue")
+        {
+            renderLiquid.material.SetTexture("_MainTex", blueTexture);
+        }
+        else if (textureName == "red")
+        {
+            renderLiquid.material.SetTexture("_MainTex", redTexture);
+        }
+
     }
 }
