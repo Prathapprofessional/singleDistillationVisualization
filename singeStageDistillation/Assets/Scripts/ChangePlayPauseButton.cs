@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; 
 
-public class ChangeTextAnimationButton : MonoBehaviour
+public class ChangePlayPauseButton : MonoBehaviour
 {
-    public Text buttonText;
-    public string original;
-    public string opposite;
+    public Image image;
+    public Sprite original;
+    public Sprite opposite;
 
     private bool start = true; 
 
@@ -23,14 +23,14 @@ public class ChangeTextAnimationButton : MonoBehaviour
         
     }
 
-    public void changeText()
+    public void changeButtonIcon()
     {
         if (start){
-            buttonText.text = opposite; 
+            image.sprite = opposite; 
             start = false; 
         }else
         {
-            buttonText.text = original;
+            image.sprite = original;
             start = true; 
         }
     }

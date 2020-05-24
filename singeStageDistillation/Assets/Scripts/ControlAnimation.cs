@@ -39,7 +39,7 @@ public class ControlAnimation : MonoBehaviour
     {
         if (flameOn)
         {
-            processDetail.setAllDetailsBlank(); 
+            //processDetail.setAllDetailsBlank(); 
             inputLiquid.changeTexture("blue");
             outputLiquid.changeTexture("blue");
             vapourVesselShader.material.SetColor("_TintColor", Color.green);
@@ -70,7 +70,7 @@ public class ControlAnimation : MonoBehaviour
         {
             flameOn = true;
             flameParticleSystem.Play();
-            processDetail.setInputLiquidName("White Wine"); 
+            //processDetail.setInputLiquidName("White Wine"); 
             StartCoroutine(startProcessAt("010", 3f, "Heating"));
         }       
     }
@@ -81,7 +81,7 @@ public class ControlAnimation : MonoBehaviour
 
         if (flameOn)
         {
-            processDetail.setTime(time, processName);
+            //processDetail.setTime(time, processName);
 
             switch (processName)
             {
