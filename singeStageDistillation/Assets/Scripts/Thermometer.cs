@@ -53,8 +53,12 @@ public class Thermometer : MonoBehaviour
             fillLiquid = true;
             inputLiquidFilled = true;
         }
-        else
-        {
+    }
+
+    public void EmptyThermometerLiquid()
+    {
+        if (inputLiquidFilled)
+        { 
             fillLiquid = false;
             emptyLiquid = true;
             inputLiquidFilled = false;

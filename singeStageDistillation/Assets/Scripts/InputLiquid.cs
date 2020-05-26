@@ -130,16 +130,25 @@ public class InputLiquid : MonoBehaviour
             emptyLiquid = false; 
             fillLiquid = true;
             inputLiquidFilled = true; 
-        }else
-        {
-            reduceLiquid = false; 
-            fillLiquid = false; 
-            emptyLiquid = true; 
+        }
+    }
+
+    public void EmptyInputLiquid()
+    {
+        if (inputLiquidFilled) { 
+            reduceLiquid = false;
+            fillLiquid = false;
+            emptyLiquid = true;
             inputLiquidFilled = false;
         }
     }
 
-    public void BoilLiquid(bool _boilLiquid)
+    public void FillInputLiquidQuickly()
+    {
+        liquidLevel = 0.2f;
+    }
+
+    public void HeatLiquid(bool _boilLiquid)
     {
         boilLiquid = _boilLiquid; 
     }

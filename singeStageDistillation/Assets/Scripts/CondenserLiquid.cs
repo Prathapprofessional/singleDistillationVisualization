@@ -53,11 +53,19 @@ public class CondenserLiquid : MonoBehaviour
             fillLiquid = true;
             inputLiquidFilled = true;
         }
-        else
-        {
+    }
+
+    public void EmptyCondenserLiquid()
+    {
+        if (inputLiquidFilled) { 
             fillLiquid = false;
             emptyLiquid = true;
             inputLiquidFilled = false;
         }
+    }
+
+    public void FillCondenserLiquidQuickly()
+    {
+        liquidLevel = 0.8f;
     }
 }

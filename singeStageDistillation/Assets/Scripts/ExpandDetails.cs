@@ -4,19 +4,17 @@ using UnityEngine;
 
 public class ExpandDetails : MonoBehaviour
 {
-    private Vector3 originalPosition;
-    public Transform expandedPosition;
+    public GameObject microBG;
+    public GameObject miniBG;
+    public GameObject miniDetails;
+    public GameObject moreButton; 
 
-    public GameObject expandedDetails;
-    public GameObject expandedBG;
-    public GameObject miniBG; 
-
-    private bool expanded = false; 
+    bool _playing =  false; 
 
     // Start is called before the first frame update
     void Start()
     {
-        originalPosition = transform.position; 
+        
     }
 
     // Update is called once per frame
@@ -25,23 +23,24 @@ public class ExpandDetails : MonoBehaviour
         
     }
 
-    public void onButtonPressed()
+    public void onPlayButtonPressed()
     {
-        if (!expanded)
+        if (!_playing)
         {
-            expandedDetails.SetActive(true);
-            expandedBG.SetActive(true);
-            miniBG.SetActive(false);
-            expanded = true;
-            transform.position = expandedPosition.position; 
-        }
-        else
-        {
-            expandedDetails.SetActive(false);
-            expandedBG.SetActive(false);
+            microBG.SetActive(false);
             miniBG.SetActive(true);
-            expanded = false;
-            transform.position = originalPosition; 
+            miniDetails.SetActive(true);
+            moreButton.SetActive(true);
+            _playing = true; 
         }
+    }
+
+    public void onStopButtonPressed()
+    {
+        microBG.SetActive(true);
+        miniBG.SetActive(false);
+        miniDetails.SetActive(false);
+        moreButton.SetActive(false);
+        _playing = false;
     }
 }

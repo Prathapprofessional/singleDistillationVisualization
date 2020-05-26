@@ -34,4 +34,10 @@ public class ChangePlayPauseButton : MonoBehaviour
             start = true; 
         }
     }
+
+    public void changeToPlayIcon()
+    {
+        image.sprite = original;
+        start = true;
+    }
 }

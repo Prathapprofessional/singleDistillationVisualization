@@ -1,0 +1,135 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class ControlData : MonoBehaviour
+{
+    float x1;
+    float x1Original;
+    float w12; 
+
+    bool _dataStarted = false;
+    bool _pauseButtonPressed = false; 
+    int countFrames = 0; 
+
+    public Text x1Text;
+    public Text x2Text;
+    public Text y1Text;
+    public Text y2Text;
+    public Text NLNL0Text;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        x1 = float.Parse(x1Text.text);
+        x1Original = x1;
+        w12 = 2.4f; 
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (_dataStarted)
+        {
+            if(countFrames > 100)
+            {
+                if(x1 > 0)
+                {
+                    Debug.Log(x1 + "");
+                    countFrames = 0;
+                    SetData();
+                    x1 = x1 - 0.010f;
+                }
+            }
+        }
+        countFrames++; 
+    }
+
+    public void StartData()
+    {
+        _dataStarted = true; 
+    }
+
+    public void onStopButtonPressed()
+    {
+        _dataStarted = false;
+        x1 = x1Original; 
+    }
+
+    public void onPauseResumeButtonPressed()
+    {
+        if (_dataStarted & !_pauseButtonPressed)
+        {
+            _dataStarted = false;
+            _pauseButtonPressed = true;
+        }else if (_pauseButtonPressed)
+        {
+            _dataStarted = true;
+            _pauseButtonPressed = false;
+        }
+    }
+
+    void SetData()
+    {
+        Setx1();
+        Setx2();
+        Sety1();
+        Sety2();
+        SetNLNL0();
+    }
+
+    void Setx1()
+    {
+        x1Text.text = x1.ToString("0.00"); 
+    }
+
+    void Setx2()
+    {
+        float x2 = Findx2();
+        x2Text.text = x2.ToString("0.00");
+    }
+
+    float Findx2()
+    {
+        float x2 = 1 - x1;
+        return x2; 
+    }
+
+    void Sety1()
+    {
+        float y1 = Findy1();
+        y1Text.text = y1.ToString("0.00");
+    }
+
+    float Findy1()
+    {
+        float y1 = w12 * (x1 / (1 + (w12 - 1) * x1)); 
+        return y1;
+    }
+
+    void Sety2()
+    {
+        float y2 = Findy2();
+        y2Text.text = y2.ToString("0.00");
+    }
+
+    float Findy2()
+    {
+        float y2 = 1 - (w12 * (x1 / (1 + (w12 - 1) * x1)));
+        return y2;
+    }
+
+    void SetNLNL0()
+    {
+        float NLNL0 = FindNLNL0();
+        NLNL0Text.text = NLNL0.ToString("0.00");
+    }
+
+    float FindNLNL0()
+    {
+        float NLNL0 = Mathf.Pow((x1 / x1Original), (1 / (w12 - 1))) * Mathf.Pow(((1 - x1) / (1 - x1Original)), (w12 / (1 - w12))); 
+        //float NLNL0 = ((x1 / x1Original) ^ (1 / (w12 - 1))) * (((1 - x1) / (1 - x1Original)) ^ (w12 / (1 - w12))); 
+        return NLNL0;
+    }
+}
