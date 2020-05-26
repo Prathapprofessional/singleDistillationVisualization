@@ -7,7 +7,7 @@ public class ExpandDetails : MonoBehaviour
     public GameObject microBG;
     public GameObject miniBG;
     public GameObject miniDetails;
-    public GameObject moreButton; 
+    public GameObject moreButton;
 
     bool _playing =  false; 
 
@@ -23,7 +23,7 @@ public class ExpandDetails : MonoBehaviour
         
     }
 
-    public void onPlayButtonPressed()
+    public void MaximizeDetails()
     {
         if (!_playing)
         {
@@ -35,7 +35,7 @@ public class ExpandDetails : MonoBehaviour
         }
     }
 
-    public void onStopButtonPressed()
+    public void MinimizeDetails()
     {
         microBG.SetActive(true);
         miniBG.SetActive(false);

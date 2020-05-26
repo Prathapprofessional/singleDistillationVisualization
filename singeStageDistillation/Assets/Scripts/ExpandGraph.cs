@@ -44,4 +44,13 @@ public class ExpandGraph : MonoBehaviour
             transform.position = originalPosition; 
         }
     }
+
+    public void MinimizeGraph()
+    {
+        expandedDetails.SetActive(false);
+        expandedBG.SetActive(false);
+        miniBG.SetActive(true);
+        expanded = false;
+        transform.position = originalPosition;
+    }
 }

@@ -25,18 +25,7 @@ public class ProcessDetail : MonoBehaviour
 
     public void setName(string detailOfProcess)
     {
-        StartCoroutine(setTimeAfterForwarding(detailOfProcess));
-    }
-
-    IEnumerator setTimeAfterForwarding(string detailOfProcess)
-    {
-        yield return new WaitForSeconds(1);
-
-        forwardTime = false;
-        if(detailOfProcess != "")
-        {
-            detailOfProcessText.text = detailOfProcess;
-        }
+        detailOfProcessText.text = detailOfProcess;
     }
 
     public void setAllDetailsBlank()

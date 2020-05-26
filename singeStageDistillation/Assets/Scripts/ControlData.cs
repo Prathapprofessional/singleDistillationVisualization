@@ -11,18 +11,23 @@ public class ControlData : MonoBehaviour
 
     bool _dataStarted = false;
     bool _pauseButtonPressed = false; 
-    int countFrames = 0; 
+    int countFrames = 0;
+    int countFramesLimit = 1000;
 
+    public Text x10Text;
     public Text x1Text;
     public Text x2Text;
     public Text y1Text;
     public Text y2Text;
     public Text NLNL0Text;
 
+    public ExpandDetails expandDetails;
+    public ExpandGraph expandgraph;
+
     // Start is called before the first frame update
     void Start()
     {
-        x1 = float.Parse(x1Text.text);
+        x1 = float.Parse(x10Text.text);
         x1Original = x1;
         w12 = 2.4f; 
     }
@@ -32,9 +37,10 @@ public class ControlData : MonoBehaviour
     {
         if (_dataStarted)
         {
-            if(countFrames > 100)
+            if(countFrames > countFramesLimit)
             {
-                if(x1 > 0)
+                countFramesLimit = 100;
+                if (x1 > 0)
                 {
                     Debug.Log(x1 + "");
                     countFrames = 0;
@@ -48,13 +54,18 @@ public class ControlData : MonoBehaviour
 
     public void StartData()
     {
+        expandDetails.MaximizeDetails();
         _dataStarted = true; 
     }
 
     public void onStopButtonPressed()
     {
+        expandgraph.MinimizeGraph();
+        expandDetails.MinimizeDetails();
         _dataStarted = false;
-        x1 = x1Original; 
+        _pauseButtonPressed = false; 
+        x1 = x1Original;
+        SetAllTextToOriginal(); 
     }
 
     public void onPauseResumeButtonPressed()
@@ -131,5 +142,14 @@ public class ControlData : MonoBehaviour
         float NLNL0 = Mathf.Pow((x1 / x1Original), (1 / (w12 - 1))) * Mathf.Pow(((1 - x1) / (1 - x1Original)), (w12 / (1 - w12))); 
         //float NLNL0 = ((x1 / x1Original) ^ (1 / (w12 - 1))) * (((1 - x1) / (1 - x1Original)) ^ (w12 / (1 - w12))); 
         return NLNL0;
+    }
+
+    void SetAllTextToOriginal()
+    {
+        x1Text.text = "-";
+        x2Text.text = "-"; 
+        y1Text.text = "-";
+        y2Text.text = "-";
+        NLNL0Text.text = "-"; 
     }
 }

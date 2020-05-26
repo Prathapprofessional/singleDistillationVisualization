@@ -126,7 +126,7 @@ public class ControlAnimation : MonoBehaviour
                     break;
                 case "Condensation":
                     Condensation();
-                    currentProcessName = "Liquid Dropping";
+                    currentProcessName = "Output Dropping";
                     break;
                 default:
                     OutputLiquidDropping();
