@@ -39,7 +39,6 @@ public class ControlAnimation : MonoBehaviour
             if (countFrames > 300)
             {
                 startProcess(currentProcessName);
-                Debug.Log("Hari");
                 countFrames = 0; 
             }
             countFrames++;
@@ -185,11 +184,12 @@ public class ControlAnimation : MonoBehaviour
 
     void PlayAllAnimationIfNotPlaying()
     {
-        foreach (ParticleSystem particleSystem in basicAnimationEffects)
+        for (int i = 0; i < basicAnimationEffects.Length; i++)
         {
-            if (!particleSystem.isPlaying)
+            if (!basicAnimationEffects[i].isPlaying)
             {
-                particleSystem.Play();
+                basicAnimationEffectsStatus[i] = true; 
+                basicAnimationEffects[i].Play();
             }
         }
     }
@@ -230,7 +230,7 @@ public class ControlAnimation : MonoBehaviour
 
     void InitiatebasicAnimationEffectsStatus()
     {
-        basicAnimationEffectsStatus = new bool[6]; 
+        basicAnimationEffectsStatus = new bool[basicAnimationEffects.Length]; 
         for(int i=0; i<basicAnimationEffects.Length; i++)
         {
             basicAnimationEffectsStatus[i] = false; 

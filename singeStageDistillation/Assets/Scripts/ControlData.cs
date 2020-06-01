@@ -7,10 +7,10 @@ public class ControlData : MonoBehaviour
 {
     float x1;
     float x1Original;
-    float w12; 
+    float w12;
 
     bool _dataStarted = false;
-    bool _pauseButtonPressed = false; 
+    bool _pauseButtonPressed = false;
     int countFrames = 0;
     int countFramesLimit = 1000;
 
@@ -20,6 +20,7 @@ public class ControlData : MonoBehaviour
     public Text y1Text;
     public Text y2Text;
     public Text NLNL0Text;
+    public Slider speed;
 
     public ExpandDetails expandDetails;
     public ExpandGraph expandgraph;
@@ -29,7 +30,7 @@ public class ControlData : MonoBehaviour
     {
         x1 = float.Parse(x10Text.text);
         x1Original = x1;
-        w12 = 2.4f; 
+        w12 = 2.4f;
     }
 
     // Update is called once per frame
@@ -37,35 +38,37 @@ public class ControlData : MonoBehaviour
     {
         if (_dataStarted)
         {
-            if(countFrames > countFramesLimit)
+            if (countFrames > countFramesLimit)
             {
                 countFramesLimit = 100;
                 if (x1 > 0)
                 {
-                    Debug.Log(x1 + "");
                     countFrames = 0;
                     SetData();
                     x1 = x1 - 0.010f;
                 }
             }
+            countFrames++;
         }
-        countFrames++; 
     }
 
     public void StartData()
     {
         expandDetails.MaximizeDetails();
-        _dataStarted = true; 
+        expandgraph.MaximizeGraph();
+        speed.maxValue = x1Original;
+        _dataStarted = true;
     }
 
     public void onStopButtonPressed()
     {
+        countFramesLimit = 1000;
         expandgraph.MinimizeGraph();
         expandDetails.MinimizeDetails();
         _dataStarted = false;
-        _pauseButtonPressed = false; 
+        _pauseButtonPressed = false;
         x1 = x1Original;
-        SetAllTextToOriginal(); 
+        SetAllTextToOriginal();
     }
 
     public void onPauseResumeButtonPressed()
@@ -74,7 +77,8 @@ public class ControlData : MonoBehaviour
         {
             _dataStarted = false;
             _pauseButtonPressed = true;
-        }else if (_pauseButtonPressed)
+        }
+        else if (_pauseButtonPressed)
         {
             _dataStarted = true;
             _pauseButtonPressed = false;
@@ -92,7 +96,8 @@ public class ControlData : MonoBehaviour
 
     void Setx1()
     {
-        x1Text.text = x1.ToString("0.00"); 
+        x1Text.text = x1.ToString("0.00");
+        speed.value = x1;
     }
 
     void Setx2()
@@ -104,7 +109,7 @@ public class ControlData : MonoBehaviour
     float Findx2()
     {
         float x2 = 1 - x1;
-        return x2; 
+        return x2;
     }
 
     void Sety1()
@@ -115,7 +120,7 @@ public class ControlData : MonoBehaviour
 
     float Findy1()
     {
-        float y1 = w12 * (x1 / (1 + (w12 - 1) * x1)); 
+        float y1 = w12 * (x1 / (1 + (w12 - 1) * x1));
         return y1;
     }
 
@@ -139,7 +144,7 @@ public class ControlData : MonoBehaviour
 
     float FindNLNL0()
     {
-        float NLNL0 = Mathf.Pow((x1 / x1Original), (1 / (w12 - 1))) * Mathf.Pow(((1 - x1) / (1 - x1Original)), (w12 / (1 - w12))); 
+        float NLNL0 = Mathf.Pow((x1 / x1Original), (1 / (w12 - 1))) * Mathf.Pow(((1 - x1) / (1 - x1Original)), (w12 / (1 - w12)));
         //float NLNL0 = ((x1 / x1Original) ^ (1 / (w12 - 1))) * (((1 - x1) / (1 - x1Original)) ^ (w12 / (1 - w12))); 
         return NLNL0;
     }
@@ -147,9 +152,14 @@ public class ControlData : MonoBehaviour
     void SetAllTextToOriginal()
     {
         x1Text.text = "-";
-        x2Text.text = "-"; 
+        x2Text.text = "-";
         y1Text.text = "-";
         y2Text.text = "-";
-        NLNL0Text.text = "-"; 
+        NLNL0Text.text = "-";
+    }
+
+    public void SpeedSliderChange(float value)
+    {
+        x1 = value;
     }
 }

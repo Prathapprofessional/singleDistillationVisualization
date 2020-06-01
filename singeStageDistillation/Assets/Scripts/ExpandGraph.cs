@@ -5,24 +5,24 @@ using UnityEngine;
 public class ExpandGraph : MonoBehaviour
 {
     private Vector3 originalPosition;
-    public Transform expandedPosition;
+    public Transform minimizedPosition;
 
     public GameObject expandedDetails;
     public GameObject expandedBG;
-    public GameObject miniBG; 
+    public GameObject miniBG;
 
-    private bool expanded = false; 
+    private bool expanded = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        originalPosition = transform.position; 
+        originalPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void onButtonPressed()
@@ -33,7 +33,7 @@ public class ExpandGraph : MonoBehaviour
             expandedBG.SetActive(true);
             miniBG.SetActive(false);
             expanded = true;
-            transform.position = expandedPosition.position; 
+            transform.position = originalPosition;
         }
         else
         {
@@ -41,8 +41,16 @@ public class ExpandGraph : MonoBehaviour
             expandedBG.SetActive(false);
             miniBG.SetActive(true);
             expanded = false;
-            transform.position = originalPosition; 
+            transform.position = minimizedPosition.position;
         }
+    }
+
+    public void MaximizeGraph()
+    {
+        expandedDetails.SetActive(true);
+        expandedBG.SetActive(true);
+        miniBG.SetActive(false);
+        expanded = true;
     }
 
     public void MinimizeGraph()
@@ -51,6 +59,6 @@ public class ExpandGraph : MonoBehaviour
         expandedBG.SetActive(false);
         miniBG.SetActive(true);
         expanded = false;
-        transform.position = originalPosition;
+        transform.position = minimizedPosition.position;
     }
 }
