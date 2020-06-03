@@ -12,7 +12,7 @@ public class ControlData : MonoBehaviour
     bool _dataStarted = false;
     bool _pauseButtonPressed = false;
     int countFrames = 0;
-    int countFramesLimit = 200;
+    int countFramesLimit = 100;
 
     public Text x10Text;
     public Text x1Text;
@@ -25,10 +25,8 @@ public class ControlData : MonoBehaviour
     public ExpandDetails expandDetails;
     public ExpandGraph expandgraph;
 
-    public InputLiquid inputLiquid;
-    public OutputLiquid outputLiquid;
+    public LiquidLevelAndColour liquidLevelAndColour; 
     public ControlAnimation controlAnimation;
-    public ControlVapourVesselEffect controlVapourVesselEffect; 
 
     public Button PlayPauseButton;
     public Button RestartButton; 
@@ -59,8 +57,7 @@ public class ControlData : MonoBehaviour
                     SetData();
                     controlAnimation.PauseAllAnimation();
                     PlayPauseButton.gameObject.SetActive(false);
-                    RestartButton.gameObject.SetActive(true);
-                    controlVapourVesselEffect.ResetSizeAndPosition();
+                    RestartButton.gameObject.SetActive(true); 
                 }
             }
             countFrames++;
@@ -109,9 +106,7 @@ public class ControlData : MonoBehaviour
         Sety1();
         Sety2();
         SetNLNL0();
-        inputLiquid.SetAccordingToData(x1Original, x1);
-        outputLiquid.SetAccordingToData(x1Original, x1);
-        controlVapourVesselEffect.SetSizeAndPositionFromData(x1Original, x1); 
+        liquidLevelAndColour.SetAccordingToData(x1Original, x1); 
     }
 
     void Setx1()
@@ -185,6 +180,7 @@ public class ControlData : MonoBehaviour
 
     public void RestartButtonPressed()
     {
+        liquidLevelAndColour.Reset();
         controlAnimation.ResumeAllAnimation();
         x1 = x1Original;
         PlayPauseButton.gameObject.SetActive(true);

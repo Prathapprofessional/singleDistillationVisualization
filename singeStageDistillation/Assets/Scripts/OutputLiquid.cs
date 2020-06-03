@@ -31,7 +31,7 @@ public class OutputLiquid : MonoBehaviour
             }
             else
             {
-                liquidLevel += 0.01f;
+                liquidLevel += 0.1f;
             }
         }
         renderLiquid.material.SetFloat("_FillAmount", liquidLevel);
@@ -55,10 +55,9 @@ public class OutputLiquid : MonoBehaviour
 
     }
 
-    public void SetAccordingToData(float x0, float x1)
+    public void SetLevelAccordingToData(float percentDifferenceInConcentration)
     {
         emptyLiquid = false; 
-        float percentDifferenceInConcentration = (x0 - x1) / (x0 - 0f);  //example : (20-15) / (20-10) = 0.5
         liquidLevel = (liquidLevelMax - (percentDifferenceInConcentration * (liquidLevelMax - liquidLevelMin))); //example : (x-5)/(5-25) = 0.5 => ((0.5 * (5-25)) + 5)
     }
 }

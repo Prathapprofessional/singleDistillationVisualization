@@ -27,7 +27,7 @@ public class CondenserLiquid : MonoBehaviour
             }
             else
             {
-                liquidLevel -= 0.01f;
+                liquidLevel -= 0.1f;
             }
         }
 
@@ -39,7 +39,7 @@ public class CondenserLiquid : MonoBehaviour
             }
             else
             {
-                liquidLevel += 0.01f;
+                liquidLevel += 0.1f;
             }
         }
         renderLiquid.material.SetFloat("_FillAmount", liquidLevel);

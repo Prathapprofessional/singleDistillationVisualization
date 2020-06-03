@@ -44,7 +44,7 @@ public class InputLiquid : MonoBehaviour
             }
             else
             {
-                liquidLevel -= 0.01f;
+                liquidLevel -= 0.1f;
             }
         }
 
@@ -56,7 +56,7 @@ public class InputLiquid : MonoBehaviour
             }
             else
             {
-                liquidLevel += 0.01f;
+                liquidLevel += 0.1f;
             }
         }
 
@@ -157,10 +157,9 @@ public class InputLiquid : MonoBehaviour
         
     }
 
-    public void SetAccordingToData(float x0, float x1)
+    public void SetLevelAccordingToData(float percentDifferenceInConcentration)
     {
         reduceLiquid = true; 
-        float percentDifferenceInConcentration = (x0 - x1) / (x0 - 0f);  //example : (20-15) / (20-10) = 0.5
         liquidLevel = (liquidLevelMin - (percentDifferenceInConcentration * (liquidLevelMin - liquidLevelAtEndOfProcess))); //example : (x-5)/(5-25) = 0.5 => ((0.5 * (5-25)) + 5)
     }
 }

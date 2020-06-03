@@ -16,7 +16,9 @@ Shader "Unlit/SpecialFX/Liquid"
  
     SubShader
     {
-        Tags {"Queue"="Transparent"  "DisableBatching" = "True" }
+        Tags {"Queue"="Transparent"  
+			  "DisableBatching" = "True" 
+			  "RenderType"="Transparent"}
   
                 Pass
         {
@@ -115,6 +117,11 @@ Shader "Unlit/SpecialFX/Liquid"
 
 		   // color of backfaces/ top
 		   float4 topColor = _TopColor * (foam + result);
+		   if (topColor.a > 0 || finalResult.a > 0){
+			topColor.a=.6; 
+			finalResult.a=.6; 
+		   }
+		   
 		   //VFACE returns positive for front facing, negative for backfacing
 		   return facing > 0 ? finalResult: topColor;
                
