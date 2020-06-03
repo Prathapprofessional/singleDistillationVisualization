@@ -50,7 +50,7 @@ public class ControlAnimation : MonoBehaviour
         _allAnimationsNotStarted = false; 
         inputLiquid.HeatLiquid(false);
         PlayAllAnimationIfNotPlaying();
-        processDetail.setName("Liquid Dropping");
+        processDetail.setName("Output Dropping");
         skipButton.SetActive(false);
         controlData.StartData();
     }
@@ -125,6 +125,10 @@ public class ControlAnimation : MonoBehaviour
                     break;
                 case "Condensation":
                     Condensation();
+                    currentProcessName = "Condensed";
+                    break;
+                case "Condensed":
+                    Condensed();
                     currentProcessName = "Output Dropping";
                     break;
                 default:
@@ -164,22 +168,18 @@ public class ControlAnimation : MonoBehaviour
         basicAnimationEffectsStatus[4] = true;
     }
 
+    void Condensed()
+    {
+        basicAnimationEffects[5].Play(); //Condensed Liquid moving down 
+        basicAnimationEffectsStatus[5] = true;
+    }
+
     void OutputLiquidDropping()
     {
         skipButton.SetActive(false);
         controlData.StartData(); 
-        basicAnimationEffects[5].Play(); //Droplets 
-        basicAnimationEffectsStatus[5] = true;
-    }
-
-    void ReduceInputLiquid()
-    {
-        inputLiquid.StartReducingLiquid();
-    }
-
-    void startOutputLiquidAnimation()
-    {
-        outputLiquid.FillOutputLiquid(); 
+        basicAnimationEffects[6].Play(); //Droplets 
+        basicAnimationEffectsStatus[6] = true;
     }
 
     void PlayAllAnimationIfNotPlaying()
@@ -194,7 +194,7 @@ public class ControlAnimation : MonoBehaviour
         }
     }
 
-    void PauseAllAnimation()
+    public void PauseAllAnimation()
     {
         inputLiquid.HeatLiquid(false);
         foreach (ParticleSystem particleSystem in basicAnimationEffects)
@@ -206,7 +206,7 @@ public class ControlAnimation : MonoBehaviour
         }
     }
 
-    void ResumeAllAnimation()
+    public void ResumeAllAnimation()
     {
         inputLiquid.HeatLiquid(true);
         for (int i = 0; i < basicAnimationEffects.Length; i++)

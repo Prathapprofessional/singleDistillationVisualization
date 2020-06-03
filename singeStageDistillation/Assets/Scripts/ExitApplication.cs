@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ExitApplication : MonoBehaviour
 {
+    public GameObject exitPopupPanel; 
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +17,19 @@ public class ExitApplication : MonoBehaviour
         
     }
 
-    public void onButtonPressed()
+    public void onExitButtonPressed()
+    {
+        exitPopupPanel.SetActive(true); 
+    }
+
+    public void onYesButtonPressed()
     {
         Application.Quit();
     }
+
+    public void onNoButtonPressed()
+    {
+        exitPopupPanel.SetActive(false);
+    }
+
 }

@@ -9,6 +9,9 @@ public class InputLiquid : MonoBehaviour
     private bool emptyLiquid = false;
     private bool reduceLiquid = false;
     private float liquidLevel = 2f;
+    private float liquidLevelMax = 2f;
+    private float liquidLevelMin = 0.2f;
+    private float liquidLevelAtEndOfProcess = 1.6f;
 
     Renderer renderLiquid;
 
@@ -35,19 +38,19 @@ public class InputLiquid : MonoBehaviour
     {
         if (fillLiquid && !reduceLiquid)
         {
-            if(liquidLevel < 0.2f)
+            if(liquidLevel < liquidLevelMin)
             {
                 fillLiquid = false; 
             }
             else
             {
                 liquidLevel -= 0.01f;
-            } 
+            }
         }
 
         if(emptyLiquid)
         {
-            if (liquidLevel > 2f)
+            if (liquidLevel > liquidLevelMax)
             {
                 emptyLiquid = false;
             }
@@ -57,17 +60,6 @@ public class InputLiquid : MonoBehaviour
             }
         }
 
-        if(reduceLiquid)
-        {
-            if (liquidLevel > 2f)
-            {
-                emptyLiquid = false;
-            }
-            else
-            {
-                liquidLevel += 0.00015f;
-            }
-        }
         renderLiquid.material.SetFloat("_FillAmount", liquidLevel);
 
         if (boilLiquid)
@@ -145,7 +137,7 @@ public class InputLiquid : MonoBehaviour
 
     public void FillInputLiquidQuickly()
     {
-        liquidLevel = 0.2f;
+        liquidLevel = liquidLevelMin;
     }
 
     public void HeatLiquid(bool _boilLiquid)
@@ -165,8 +157,10 @@ public class InputLiquid : MonoBehaviour
         
     }
 
-    public void StartReducingLiquid()
+    public void SetAccordingToData(float x0, float x1)
     {
         reduceLiquid = true; 
+        float percentDifferenceInConcentration = (x0 - x1) / (x0 - 0f);  //example : (20-15) / (20-10) = 0.5
+        liquidLevel = (liquidLevelMin - (percentDifferenceInConcentration * (liquidLevelMin - liquidLevelAtEndOfProcess))); //example : (x-5)/(5-25) = 0.5 => ((0.5 * (5-25)) + 5)
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems; 
 
 public class ZoomInZoomOut : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class ZoomInZoomOut : MonoBehaviour
 
     public float panYMin = -15f;
     public float panYMax = 15f;
+
+    private bool touchedToPan = false; 
 
     // Start is called before the first frame update
     void Start()
@@ -47,10 +50,28 @@ public class ZoomInZoomOut : MonoBehaviour
             }
         }
 
-        //Mobile and PC Touch Detection
+        //Mobile and PC Touch Start Detection
         if (Input.GetMouseButtonDown(0))
         {
-            touchStart = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+#if UNITY_ANDROID && !UNITY_EDITOR
+            if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+#endif
+#if UNITY_EDITOR
+            if (!EventSystem.current.IsPointerOverGameObject())
+#endif
+#if UNITY_STANDALONE
+            if (!EventSystem.current.IsPointerOverGameObject())
+#endif
+            {
+                touchStart = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                touchedToPan = true;
+            }
+        }
+
+        //Mobile and PC Touch End Detection 
+        if (Input.GetMouseButtonUp(0))
+        {
+            touchedToPan = false;
         }
 
         //Mobile and PC Keyboard Zoom Pinch 
@@ -73,11 +94,14 @@ public class ZoomInZoomOut : MonoBehaviour
         //Mobile and PC Keyboard Pan 
         else if (Input.GetMouseButton(0))
         {
-            Vector3 direction = touchStart - Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector3 targetPosition = Camera.main.transform.position + direction; 
-            if(targetPosition.x < panXMax && targetPosition.x > panXMin
-                && targetPosition.y < panYMax && targetPosition.y > panYMin)
-                Camera.main.transform.position = targetPosition; 
+            if(touchedToPan)
+            {
+                Vector3 direction = touchStart - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector3 targetPosition = Camera.main.transform.position + direction;
+                if (targetPosition.x < panXMax && targetPosition.x > panXMin
+                    && targetPosition.y < panYMax && targetPosition.y > panYMin)
+                    Camera.main.transform.position = targetPosition;
+            }
         }
         zoom(Input.GetAxis("Mouse ScrollWheel"));
     }

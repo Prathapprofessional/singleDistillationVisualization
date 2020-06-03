@@ -12,7 +12,7 @@ public class ControlData : MonoBehaviour
     bool _dataStarted = false;
     bool _pauseButtonPressed = false;
     int countFrames = 0;
-    int countFramesLimit = 1000;
+    int countFramesLimit = 200;
 
     public Text x10Text;
     public Text x1Text;
@@ -24,6 +24,14 @@ public class ControlData : MonoBehaviour
 
     public ExpandDetails expandDetails;
     public ExpandGraph expandgraph;
+
+    public InputLiquid inputLiquid;
+    public OutputLiquid outputLiquid;
+    public ControlAnimation controlAnimation;
+    public ControlVapourVesselEffect controlVapourVesselEffect; 
+
+    public Button PlayPauseButton;
+    public Button RestartButton; 
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +54,13 @@ public class ControlData : MonoBehaviour
                     countFrames = 0;
                     SetData();
                     x1 = x1 - 0.010f;
+                }else
+                {
+                    SetData();
+                    controlAnimation.PauseAllAnimation();
+                    PlayPauseButton.gameObject.SetActive(false);
+                    RestartButton.gameObject.SetActive(true);
+                    controlVapourVesselEffect.ResetSizeAndPosition();
                 }
             }
             countFrames++;
@@ -56,6 +71,8 @@ public class ControlData : MonoBehaviour
     {
         expandDetails.MaximizeDetails();
         expandgraph.MaximizeGraph();
+        x1 = float.Parse(x10Text.text);
+        x1Original = x1;
         speed.maxValue = x1Original;
         _dataStarted = true;
     }
@@ -92,6 +109,9 @@ public class ControlData : MonoBehaviour
         Sety1();
         Sety2();
         SetNLNL0();
+        inputLiquid.SetAccordingToData(x1Original, x1);
+        outputLiquid.SetAccordingToData(x1Original, x1);
+        controlVapourVesselEffect.SetSizeAndPositionFromData(x1Original, x1); 
     }
 
     void Setx1()
@@ -161,5 +181,13 @@ public class ControlData : MonoBehaviour
     public void SpeedSliderChange(float value)
     {
         x1 = value;
+    }
+
+    public void RestartButtonPressed()
+    {
+        controlAnimation.ResumeAllAnimation();
+        x1 = x1Original;
+        PlayPauseButton.gameObject.SetActive(true);
+        RestartButton.gameObject.   SetActive(false);
     }
 }

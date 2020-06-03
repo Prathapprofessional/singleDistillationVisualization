@@ -5,9 +5,10 @@ using UnityEngine;
 public class OutputLiquid : MonoBehaviour
 {
     private bool outputLiquidFilled = false;
-    private bool fillLiquid = false;
     private bool emptyLiquid = false;
     private float liquidLevel = 1f;
+    private float liquidLevelMax = 0.7f;
+    private float liquidLevelMin = -0.6f;
 
     Renderer renderLiquid;
     public Texture blueTexture;
@@ -22,21 +23,9 @@ public class OutputLiquid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (fillLiquid)
-        {
-            if (liquidLevel < -0.5f)
-            {
-                fillLiquid = false;
-            }
-            else
-            {
-                liquidLevel -= 0.001f;
-            }
-        }
-
         if (emptyLiquid)
         {
-            if (liquidLevel > 1f)
+            if (liquidLevel > liquidLevelMax)
             {
                 emptyLiquid = false;
             }
@@ -48,35 +37,9 @@ public class OutputLiquid : MonoBehaviour
         renderLiquid.material.SetFloat("_FillAmount", liquidLevel);
     }
 
-    public void FillOutputLiquid()
-    {
-        if (!outputLiquidFilled)
-        {
-            emptyLiquid = false;
-            fillLiquid = true;
-            outputLiquidFilled = true;
-        }
-        else
-        {
-            fillLiquid = false; 
-            emptyLiquid = true;
-            outputLiquidFilled = false;
-        }
-    }
-
     public void EmptyOutputLiquid()
     {
-        if (outputLiquidFilled)
-        {
-            fillLiquid = false; 
-            emptyLiquid = true;
-            outputLiquidFilled = false;
-        }
-    }
-
-    public void EmptyOutCompletely()
-    {
-        liquidLevel = 1f; 
+        emptyLiquid = true;
     }
 
     public void changeTexture(string textureName)
@@ -90,5 +53,12 @@ public class OutputLiquid : MonoBehaviour
             renderLiquid.material.SetTexture("_MainTex", redTexture);
         }
 
+    }
+
+    public void SetAccordingToData(float x0, float x1)
+    {
+        emptyLiquid = false; 
+        float percentDifferenceInConcentration = (x0 - x1) / (x0 - 0f);  //example : (20-15) / (20-10) = 0.5
+        liquidLevel = (liquidLevelMax - (percentDifferenceInConcentration * (liquidLevelMax - liquidLevelMin))); //example : (x-5)/(5-25) = 0.5 => ((0.5 * (5-25)) + 5)
     }
 }

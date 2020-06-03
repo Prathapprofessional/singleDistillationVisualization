@@ -25,10 +25,11 @@ public class ChangePlayPauseButton : MonoBehaviour
 
     public void changeButtonIcon()
     {
-        if (start){
+        if (start)
+        {
             image.sprite = opposite; 
             start = false; 
-        }else
+        }else if(!start)
         {
             image.sprite = original;
             start = true; 
