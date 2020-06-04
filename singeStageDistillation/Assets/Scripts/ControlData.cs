@@ -83,6 +83,7 @@ public class ControlData : MonoBehaviour
         _pauseButtonPressed = false;
         x1 = x1Original;
         SetAllTextToOriginal();
+        liquidLevelAndColour.SetOriginalColourAccordingToData(); 
     }
 
     public void onPauseResumeButtonPressed()

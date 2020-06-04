@@ -101,7 +101,7 @@ public class ControlAnimation : MonoBehaviour
 
     void startProcess(string processName)
     {
-        if (_allAnimationsNotStarted)
+        if (_allAnimationsNotStarted & _animationPlaying)
         {
             processDetail.setName(processName);
 

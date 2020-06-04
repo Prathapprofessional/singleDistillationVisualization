@@ -8,11 +8,14 @@ public class LiquidLevelAndColour : MonoBehaviour
     public OutputLiquid outputLiquid;
     public ControlVapourVesselEffect controlVapourVesselEffect;
 
-    public Material inputLiquidMaterial;
-    public Material ouputLiquidMaterial;
-    public Material vapourMaterial;
-    public Material waterBubblesMaterial;
-    public Material dropletsMaterial;
+    public Renderer inputLiquidShader;
+    public Renderer outputLiquidShader;
+    public Renderer vapourShader;
+    public Renderer vapourTopShader;
+    public Renderer vapourCondenserShader;
+    public Renderer dropletCondenserShader;
+    public Renderer dropletShader;
+    public Renderer splashShader;
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +46,31 @@ public class LiquidLevelAndColour : MonoBehaviour
 
     private void SetColourAccordingToData(float percentDifferenceInConcentration)
     {
+        inputLiquidShader.material.SetColor("_Tint", new Color(0, 1, 0, 1));
+        outputLiquidShader.material.SetColor("_Tint", new Color(0, 1, 0, 1));
 
+        vapourShader.material.SetColor("_TintColor", new Color(0, 1, 0, .13f));
+        vapourTopShader.material.SetColor("_TintColor", new Color(0, 1, 0, .13f));
+        vapourCondenserShader.material.SetColor("_TintColor", new Color(0, 1, 0, .13f));
+
+        dropletCondenserShader.material.SetColor("_TintColor", new Color(0, 1, 0, .6f));
+        dropletShader.material.SetColor("_TintColor", new Color(0, 1, 0, .6f));
+        splashShader.material.SetColor("_TintColor", new Color(0, 1, 0, .6f));
+
+    }
+
+    public void SetOriginalColourAccordingToData()
+    {
+        inputLiquidShader.material.SetColor("_Tint", new Color(0, 1, 0, 1));
+        outputLiquidShader.material.SetColor("_Tint", new Color(0, 1, 0, 1));
+
+        vapourShader.material.SetColor("_TintColor", new Color(0, 1, 0, .13f));
+        vapourTopShader.material.SetColor("_TintColor", new Color(0, 1, 0, .13f));
+        vapourCondenserShader.material.SetColor("_TintColor", new Color(0, 1, 0, .13f));
+
+        dropletCondenserShader.material.SetColor("_TintColor", new Color(0, 1, 0, .6f));
+        dropletShader.material.SetColor("_TintColor", new Color(0, 1, 0, .6f));
+        splashShader.material.SetColor("_TintColor", new Color(0, 1, 0, .6f));
     }
 
     public void Reset()
