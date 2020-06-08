@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems; 
 
 public class ZoomInZoomOut : MonoBehaviour
-{
+{   
     Camera mainCamera;
 
     Vector3 originalCameraPosition;
