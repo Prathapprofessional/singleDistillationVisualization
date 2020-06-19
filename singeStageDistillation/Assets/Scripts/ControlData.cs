@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro; 
 
 public class ControlData : MonoBehaviour
 {
@@ -9,17 +10,26 @@ public class ControlData : MonoBehaviour
     float x1Original;
     float w12;
 
+    float x2;
+    float y1;
+    float y2;
+    float NLNL0;
+
+    DataClass[] dataArray;
+    int currentValue;
+    int totalNumberOfValues; 
+
     bool _dataStarted = false;
     bool _pauseButtonPressed = false;
     int countFrames = 0;
     int countFramesLimit = 100;
 
-    public Text x10Text;
-    public Text x1Text;
-    public Text x2Text;
-    public Text y1Text;
-    public Text y2Text;
-    public Text NLNL0Text;
+    public TextMeshProUGUI x10Text;
+    public TextMeshProUGUI x1Text;
+    public TextMeshProUGUI x2Text;
+    public TextMeshProUGUI y1Text;
+    public TextMeshProUGUI y2Text;
+    public TextMeshProUGUI NLNL0Text;
     public Slider speed;
 
     public ExpandDetails expandDetails;
@@ -29,13 +39,13 @@ public class ControlData : MonoBehaviour
     public ControlAnimation controlAnimation;
 
     public Button PlayPauseButton;
-    public Button RestartButton; 
+    public Button RestartButton;
+
+    public ControlChart controlChart;
 
     // Start is called before the first frame update
     void Start()
     {
-        x1 = float.Parse(x10Text.text);
-        x1Original = x1;
         w12 = 2.4f;
     }
 
@@ -50,11 +60,11 @@ public class ControlData : MonoBehaviour
                 if (x1 > 0)
                 {
                     countFrames = 0;
-                    SetData();
+                    SetDataPerFrame();
                     x1 = x1 - 0.010f;
                 }else
                 {
-                    SetData();
+                    SetDataPerFrame();
                     controlAnimation.PauseAllAnimation();
                     PlayPauseButton.gameObject.SetActive(false);
                     RestartButton.gameObject.SetActive(true); 
@@ -68,8 +78,6 @@ public class ControlData : MonoBehaviour
     {
         expandDetails.MaximizeDetails();
         expandgraph.MaximizeGraph();
-        x1 = float.Parse(x10Text.text);
-        x1Original = x1;
         speed.maxValue = x1Original;
         _dataStarted = true;
     }
@@ -82,8 +90,12 @@ public class ControlData : MonoBehaviour
         _dataStarted = false;
         _pauseButtonPressed = false;
         x1 = x1Original;
+        speed.value = 1;
         SetAllTextToOriginal();
-        liquidLevelAndColour.SetOriginalColourAccordingToData(); 
+        liquidLevelAndColour.SetOriginalColourAccordingToData();
+
+        PlayPauseButton.gameObject.SetActive(true);
+        RestartButton.gameObject.SetActive(false);
     }
 
     public void onPauseResumeButtonPressed()
@@ -100,69 +112,71 @@ public class ControlData : MonoBehaviour
         }
     }
 
-    void SetData()
+    public void onPlayButtonPressed()
     {
-        Setx1();
-        Setx2();
-        Sety1();
-        Sety2();
-        SetNLNL0();
-        liquidLevelAndColour.SetAccordingToData(x1Original, x1); 
+        x1 = float.Parse(x10Text.text);
+        x1Original = x1;
+        FindAllData(); 
     }
 
-    void Setx1()
+    void FindAllData()
+    {
+        totalNumberOfValues = (int) (x1Original / 0.010f ); 
+        dataArray = new DataClass[totalNumberOfValues];
+
+        for (int i=totalNumberOfValues; i <= 0; i--)
+        {
+            x2 = 1 - x1;
+            y1 = w12 * (x1 / (1 + (w12 - 1) * x1));
+            y2 = 1 - (w12 * (x1 / (1 + (w12 - 1) * x1)));
+            NLNL0 = Mathf.Pow((x1 / x1Original), (1 / (w12 - 1))) * Mathf.Pow(((1 - x1) / (1 - x1Original)), (w12 / (1 - w12)));
+
+            DataClass dataObject = new DataClass(x1, x2, y1, y2, NLNL0);
+            dataArray[i] = dataObject; 
+
+            x1 = x1 - 0.010f;
+        }
+    }
+
+    public void FindInitialData()
+    {
+        x1 = float.Parse(x10Text.text);
+        x1Original = x1;
+        FindData(); 
+    }
+
+    void SetDataPerFrame()
+    {
+        if(x1 > 0)
+        {
+            FindData();
+            SetData();
+        }
+    }
+
+    void FindData()
+    {
+        x2 = 1 - x1;
+        y1 = w12 * (x1 / (1 + (w12 - 1) * x1));
+        y2 = 1 - (w12 * (x1 / (1 + (w12 - 1) * x1)));
+        NLNL0 = Mathf.Pow((x1 / x1Original), (1 / (w12 - 1))) * Mathf.Pow(((1 - x1) / (1 - x1Original)), (w12 / (1 - w12)));
+        liquidLevelAndColour.SetAccordingToData(x1Original, x1, x2, y1, y2);
+    }
+
+    void SetData()
     {
         x1Text.text = x1.ToString("0.00");
         speed.value = x1;
-    }
 
-    void Setx2()
-    {
-        float x2 = Findx2();
         x2Text.text = x2.ToString("0.00");
-    }
-
-    float Findx2()
-    {
-        float x2 = 1 - x1;
-        return x2;
-    }
-
-    void Sety1()
-    {
-        float y1 = Findy1();
         y1Text.text = y1.ToString("0.00");
-    }
-
-    float Findy1()
-    {
-        float y1 = w12 * (x1 / (1 + (w12 - 1) * x1));
-        return y1;
-    }
-
-    void Sety2()
-    {
-        float y2 = Findy2();
         y2Text.text = y2.ToString("0.00");
-    }
-
-    float Findy2()
-    {
-        float y2 = 1 - (w12 * (x1 / (1 + (w12 - 1) * x1)));
-        return y2;
-    }
-
-    void SetNLNL0()
-    {
-        float NLNL0 = FindNLNL0();
         NLNL0Text.text = NLNL0.ToString("0.00");
-    }
 
-    float FindNLNL0()
-    {
-        float NLNL0 = Mathf.Pow((x1 / x1Original), (1 / (w12 - 1))) * Mathf.Pow(((1 - x1) / (1 - x1Original)), (w12 / (1 - w12)));
-        //float NLNL0 = ((x1 / x1Original) ^ (1 / (w12 - 1))) * (((1 - x1) / (1 - x1Original)) ^ (w12 / (1 - w12))); 
-        return NLNL0;
+        controlChart.SetAccordingToData(NLNL0, x1, "x1");
+        controlChart.SetAccordingToData(NLNL0, x2, "x2");
+        controlChart.SetAccordingToData(NLNL0, y1, "y1");
+        controlChart.SetAccordingToData(NLNL0, y2, "y2");
     }
 
     void SetAllTextToOriginal()
@@ -185,6 +199,7 @@ public class ControlData : MonoBehaviour
         controlAnimation.ResumeAllAnimation();
         x1 = x1Original;
         PlayPauseButton.gameObject.SetActive(true);
-        RestartButton.gameObject.   SetActive(false);
+        RestartButton.gameObject.SetActive(false);
     }
+
 }

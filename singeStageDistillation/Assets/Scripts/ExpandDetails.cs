@@ -7,7 +7,9 @@ public class ExpandDetails : MonoBehaviour
     public GameObject microBG;
     public GameObject miniBG;
     public GameObject miniDetails;
-    public GameObject moreButton;
+    public GameObject graph;
+    public GameObject speedSlider;
+    //public GameObject moreButton;
 
     bool _playing =  false; 
 
@@ -30,7 +32,9 @@ public class ExpandDetails : MonoBehaviour
             microBG.SetActive(false);
             miniBG.SetActive(true);
             miniDetails.SetActive(true);
-            moreButton.SetActive(true);
+            graph.SetActive(true); 
+            //moreButton.SetActive(true);
+            speedSlider.SetActive(true);
             _playing = true; 
         }
     }
@@ -40,7 +44,9 @@ public class ExpandDetails : MonoBehaviour
         microBG.SetActive(true);
         miniBG.SetActive(false);
         miniDetails.SetActive(false);
-        moreButton.SetActive(false);
+        graph.SetActive(false);
+        //moreButton.SetActive(false);
+        speedSlider.SetActive(false);
         _playing = false;
     }
 }

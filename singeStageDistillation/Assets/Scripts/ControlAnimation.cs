@@ -11,7 +11,7 @@ public class ControlAnimation : MonoBehaviour
     public OutputLiquid outputLiquid;
     public InputLiquid inputLiquid;  
     public Text inputLiquidText1;
-    public ControlData controlData; 
+    public ControlData controlData;
 
     public ProcessDetail processDetail;
     public GameObject skipButton;
@@ -85,6 +85,8 @@ public class ControlAnimation : MonoBehaviour
             skipButton.SetActive(true);
             parameterButton.SetActive(false);
             stopButton.SetActive(true);
+
+            controlData.FindInitialData(); 
 
         }
         else if(_animationStarted & _animationPlaying) //Pause

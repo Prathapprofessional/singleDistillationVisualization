@@ -12,7 +12,7 @@ public class ZoomInZoomOut : MonoBehaviour
 
     Vector3 touchStart;
     public float zoomOutMin = 1.01f;
-    public float zoomOutMax = 9.01f;
+    public float zoomOutMax = 12.01f;
 
     public float panXMin = -22f;
     public float panXMax = 22f;

@@ -8,7 +8,7 @@ public class OutputLiquid : MonoBehaviour
     private bool emptyLiquid = false;
     private float liquidLevel = 1f;
     private float liquidLevelMax = 0.7f;
-    private float liquidLevelMin = -0.6f;
+    private float liquidLevelMin = -1.5f;
 
     Renderer renderLiquid;
     public Texture blueTexture;
