@@ -27,12 +27,35 @@ public class ControlChart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public void SetAccordingToData(float NLNL0Current, float xCurrent, string valueName)
+    public void SetAccordingToData(DataClass[] data, int index)
     {
+        SetDataForLine(data, index);
+    }
 
+    public void SetAccordingToDataSliderClicked(DataClass[] data, int index)
+    {
+        ResetGraph();
+
+        for (int i = 0; i <= index; i++)
+        {
+            SetDataForLine(data, i); 
+        }
+
+    }
+
+    void SetDataForLine(DataClass[] data, int i)
+    {
+        CalculateLine(data[i].GetNLNL0(), data[i].GetX1(), "x1");
+        CalculateLine(data[i].GetNLNL0(), data[i].GetX2(), "x2");
+        CalculateLine(data[i].GetNLNL0(), data[i].GetY1(), "y1");
+        CalculateLine(data[i].GetNLNL0(), data[i].GetY2(), "y2");
+    }
+
+    public void CalculateLine(float NLNL0Current, float xCurrent, string valueName)
+    {
         //Just for understanding of the starting point 
         float NLNL0Min = 0f;
         float xMin = 0f;
@@ -48,7 +71,7 @@ public class ControlChart : MonoBehaviour
         point.x = x;
         point.y = y;
 
-        Vector3[] pointsArray; 
+        Vector3[] pointsArray;
 
         switch (valueName)
         {
@@ -86,7 +109,7 @@ public class ControlChart : MonoBehaviour
 
     public void onStopButtonPressed()
     {
-        ResetGraph(); 
+        ResetGraph();
     }
 
     void ResetGraph()

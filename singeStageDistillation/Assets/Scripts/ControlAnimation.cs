@@ -86,8 +86,6 @@ public class ControlAnimation : MonoBehaviour
             parameterButton.SetActive(false);
             stopButton.SetActive(true);
 
-            controlData.FindInitialData(); 
-
         }
         else if(_animationStarted & _animationPlaying) //Pause
         {
