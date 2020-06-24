@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; 
+using UnityEngine.UI;
+using TMPro; 
 
 public class ControlParameters : MonoBehaviour
 {
-    public Text X1oText;
-    public Text X2oText;
+    public TextMeshProUGUI X1oText;
+    public TextMeshProUGUI X2oText;
     // Start is called before the first frame update
     void Start()
     {

@@ -7,7 +7,7 @@ public class Thermometer : MonoBehaviour
     private bool inputLiquidFilled = false;
     private bool fillLiquid = false;
     private bool emptyLiquid = false;
-    private float liquidLevel = 1.4f;
+    private float liquidLevel = 1.8f;
 
     Renderer renderLiquid;
     // Start is called before the first frame update
@@ -27,13 +27,13 @@ public class Thermometer : MonoBehaviour
             }
             else
             {
-                liquidLevel -= 0.00025f;
+                liquidLevel -= 0.0025f;
             }
         }
 
         if (emptyLiquid)
         {
-            if (liquidLevel > 1.1f)
+            if (liquidLevel > 1.8f)
             {
                 emptyLiquid = false;
             }

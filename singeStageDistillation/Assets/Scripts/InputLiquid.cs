@@ -11,7 +11,7 @@ public class InputLiquid : MonoBehaviour
     private float liquidLevel = 2f;
     private float liquidLevelMax = 2f;
     private float liquidLevelMin = 0.2f;
-    private float liquidLevelAtEndOfProcess = 1.6f;
+    private float liquidLevelAtEndOfProcess = .8f;
 
     Renderer renderLiquid;
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro; 
 
 public class ControlData : MonoBehaviour
 {
@@ -9,17 +10,23 @@ public class ControlData : MonoBehaviour
     float x1Original;
     float w12;
 
+    DataClass[] dataArray;
+    int currentValue;
+    int totalNumberOfValues; 
+
     bool _dataStarted = false;
     bool _pauseButtonPressed = false;
+    bool _playButtonPressed = false;
+    bool _sliderClicked = false;
     int countFrames = 0;
     int countFramesLimit = 100;
 
-    public Text x10Text;
-    public Text x1Text;
-    public Text x2Text;
-    public Text y1Text;
-    public Text y2Text;
-    public Text NLNL0Text;
+    public TextMeshProUGUI x10Text;
+    public TextMeshProUGUI x1Text;
+    public TextMeshProUGUI x2Text;
+    public TextMeshProUGUI y1Text;
+    public TextMeshProUGUI y2Text;
+    public TextMeshProUGUI NLNL0Text;
     public Slider speed;
 
     public ExpandDetails expandDetails;
@@ -29,13 +36,13 @@ public class ControlData : MonoBehaviour
     public ControlAnimation controlAnimation;
 
     public Button PlayPauseButton;
-    public Button RestartButton; 
+    public Button RestartButton;
+
+    public ControlChart controlChart;
 
     // Start is called before the first frame update
     void Start()
     {
-        x1 = float.Parse(x10Text.text);
-        x1Original = x1;
         w12 = 2.4f;
     }
 
@@ -47,14 +54,14 @@ public class ControlData : MonoBehaviour
             if (countFrames > countFramesLimit)
             {
                 countFramesLimit = 100;
-                if (x1 > 0)
+                if (currentValue < totalNumberOfValues)
                 {
+                    controlAnimation.ResumeAllAnimation();
                     countFrames = 0;
-                    SetData();
-                    x1 = x1 - 0.010f;
+                    SetData(currentValue);
+                    currentValue++;
                 }else
                 {
-                    SetData();
                     controlAnimation.PauseAllAnimation();
                     PlayPauseButton.gameObject.SetActive(false);
                     RestartButton.gameObject.SetActive(true); 
@@ -68,101 +75,104 @@ public class ControlData : MonoBehaviour
     {
         expandDetails.MaximizeDetails();
         expandgraph.MaximizeGraph();
-        x1 = float.Parse(x10Text.text);
-        x1Original = x1;
-        speed.maxValue = x1Original;
         _dataStarted = true;
     }
 
     public void onStopButtonPressed()
     {
-        countFramesLimit = 1000;
+        countFramesLimit = 100;
         expandgraph.MinimizeGraph();
         expandDetails.MinimizeDetails();
+
         _dataStarted = false;
         _pauseButtonPressed = false;
+        _playButtonPressed = false;
+
         x1 = x1Original;
+        speed.value = 0;
         SetAllTextToOriginal();
-        liquidLevelAndColour.SetOriginalColourAccordingToData(); 
+        liquidLevelAndColour.SetOriginalColourAccordingToData();
+
+        PlayPauseButton.gameObject.SetActive(true);
+        RestartButton.gameObject.SetActive(false);
     }
 
     public void onPauseResumeButtonPressed()
     {
-        if (_dataStarted & !_pauseButtonPressed)
+        if (_playButtonPressed)
         {
-            _dataStarted = false;
-            _pauseButtonPressed = true;
+            if (_dataStarted & !_pauseButtonPressed)
+            {
+                _dataStarted = false;
+                _pauseButtonPressed = true;
+            }
+            else if (_pauseButtonPressed)
+            {
+                _dataStarted = true;
+                _pauseButtonPressed = false;
+            }
         }
-        else if (_pauseButtonPressed)
+        else
         {
-            _dataStarted = true;
-            _pauseButtonPressed = false;
+            x1 = float.Parse(x10Text.text);
+            x1Original = x1;
+            FindAllData();
+            _playButtonPressed = true; 
         }
     }
 
-    void SetData()
+    void FindAllData()
     {
-        Setx1();
-        Setx2();
-        Sety1();
-        Sety2();
-        SetNLNL0();
-        liquidLevelAndColour.SetAccordingToData(x1Original, x1); 
+
+        totalNumberOfValues = (int) (x1Original / 0.010f ) + 1;
+ 
+        dataArray = new DataClass[totalNumberOfValues];
+        speed.maxValue = totalNumberOfValues-1;
+
+        for (int i=0; i < totalNumberOfValues; i++)
+        {
+            float x2 = 1 - x1;
+            float y1 = w12 * (x1 / (1 + (w12 - 1) * x1));
+            float y2 = 1 - (w12 * (x1 / (1 + (w12 - 1) * x1)));
+            float NLNL0 = Mathf.Pow((x1 / x1Original), (1 / (w12 - 1))) * Mathf.Pow(((1 - x1) / (1 - x1Original)), (w12 / (1 - w12)));
+
+            DataClass dataObject = new DataClass(x1, x2, y1, y2, NLNL0);
+            dataArray[i] = dataObject;
+
+            if (i == 0)
+            {
+                liquidLevelAndColour.SetAccordingToData(x1Original, x1, x2, y1, y2);
+            }
+
+            x1 = x1 - 0.010f;
+        }
     }
 
-    void Setx1()
+    void SetData(int index)
     {
-        x1Text.text = x1.ToString("0.00");
-        speed.value = x1;
-    }
+        //Data
+        DataClass data = dataArray[index]; 
+        x1Text.text = data.GetX1().ToString("0.00");
+        speed.value = index;
 
-    void Setx2()
-    {
-        float x2 = Findx2();
-        x2Text.text = x2.ToString("0.00");
-    }
+        x2Text.text = data.GetX2().ToString("0.00");
+        y1Text.text = data.GetY1().ToString("0.00");
+        y2Text.text = data.GetY2().ToString("0.00");
+        NLNL0Text.text = data.GetNLNL0().ToString("0.00");
 
-    float Findx2()
-    {
-        float x2 = 1 - x1;
-        return x2;
-    }
+        //Liquid Level And Colour
+        liquidLevelAndColour.SetAccordingToData(x1Original, data.GetX1(), data.GetX2(), data.GetY1(), data.GetY2());
 
-    void Sety1()
-    {
-        float y1 = Findy1();
-        y1Text.text = y1.ToString("0.00");
-    }
-
-    float Findy1()
-    {
-        float y1 = w12 * (x1 / (1 + (w12 - 1) * x1));
-        return y1;
-    }
-
-    void Sety2()
-    {
-        float y2 = Findy2();
-        y2Text.text = y2.ToString("0.00");
-    }
-
-    float Findy2()
-    {
-        float y2 = 1 - (w12 * (x1 / (1 + (w12 - 1) * x1)));
-        return y2;
-    }
-
-    void SetNLNL0()
-    {
-        float NLNL0 = FindNLNL0();
-        NLNL0Text.text = NLNL0.ToString("0.00");
-    }
-
-    float FindNLNL0()
-    {
-        float NLNL0 = Mathf.Pow((x1 / x1Original), (1 / (w12 - 1))) * Mathf.Pow(((1 - x1) / (1 - x1Original)), (w12 / (1 - w12)));
-        //float NLNL0 = ((x1 / x1Original) ^ (1 / (w12 - 1))) * (((1 - x1) / (1 - x1Original)) ^ (w12 / (1 - w12))); 
-        return NLNL0;
+        //Chart
+        if (_sliderClicked)
+        {
+            controlChart.SetAccordingToDataSliderClicked(dataArray, index);
+            _sliderClicked = false;
+        }
+        else
+        {
+            controlChart.SetAccordingToData(dataArray, index);
+        }
     }
 
     void SetAllTextToOriginal()
@@ -176,15 +186,17 @@ public class ControlData : MonoBehaviour
 
     public void SpeedSliderChange(float value)
     {
-        x1 = value;
+        currentValue = (int) value;
+        _sliderClicked = true; 
     }
 
     public void RestartButtonPressed()
     {
         liquidLevelAndColour.Reset();
         controlAnimation.ResumeAllAnimation();
-        x1 = x1Original;
+        currentValue = 0; 
         PlayPauseButton.gameObject.SetActive(true);
-        RestartButton.gameObject.   SetActive(false);
+        RestartButton.gameObject.SetActive(false);
     }
+
 }

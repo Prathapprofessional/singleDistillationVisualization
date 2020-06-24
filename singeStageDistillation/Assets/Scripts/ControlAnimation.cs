@@ -11,7 +11,7 @@ public class ControlAnimation : MonoBehaviour
     public OutputLiquid outputLiquid;
     public InputLiquid inputLiquid;  
     public Text inputLiquidText1;
-    public ControlData controlData; 
+    public ControlData controlData;
 
     public ProcessDetail processDetail;
     public GameObject skipButton;
