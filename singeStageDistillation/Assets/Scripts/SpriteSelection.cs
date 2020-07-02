@@ -11,6 +11,7 @@ public class SpriteSelection : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
+            print("click is active");
             if(mainPanel != null && otherPanel1 != null
             && otherPanel2 != null && otherPanel3 != null)
             {
