@@ -121,9 +121,10 @@ Shader "Unlit/SpecialFX/Liquid"
 			topColor.a=.8; 
 			finalResult.a=.8; 
 		   }
+		   float4 topColorWTexture = topColor * tex2D(_MainTex, i.uv); 
 		   
 		   //VFACE returns positive for front facing, negative for backfacing
-		   return facing > 0 ? finalResult: topColor;
+		   return facing > 0 ? finalResult: topColorWTexture;
                
          }
          ENDCG
