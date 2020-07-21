@@ -118,8 +118,8 @@ Shader "Unlit/SpecialFX/Liquid"
 		   // color of backfaces/ top
 		   float4 topColor = _TopColor * (foam + result);
 		   if (topColor.a > 0 || finalResult.a > 0){
-			topColor.a=.8; 
-			finalResult.a=.8; 
+			topColor.a=.7; 
+			finalResult.a=.7; 
 		   }
 		   float4 topColorWTexture = topColor * tex2D(_MainTex, i.uv); 
 		   

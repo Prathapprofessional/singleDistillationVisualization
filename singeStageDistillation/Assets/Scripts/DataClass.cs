@@ -9,6 +9,9 @@ public class DataClass : MonoBehaviour
     float y1;
     float y2;
     float NLNL0;
+    float x1c;
+    float x2c;
+    float volume;
 
     public DataClass(float _x1, float _x2, float _y1, float _y2, float _NLNL0)
     {
@@ -44,6 +47,21 @@ public class DataClass : MonoBehaviour
         return NLNL0;
     }
 
+    public float GetX1C()
+    {
+        return x1c;
+    }
+
+    public float GetX2C()
+    {
+        return x2c;
+    }
+
+    public float GetVolume()
+    {
+        return volume;
+    }
+
     public void SetX1(float value)
     {
         x1 = value; 
@@ -67,6 +85,21 @@ public class DataClass : MonoBehaviour
     public void SetNLNL0(float value)
     {
         NLNL0 = value;
+    }
+
+    public void SetX1C(float value)
+    {
+        x1c = value;
+    }
+
+    public void SetX2C(float value)
+    {
+        x2c = value;
+    }
+
+    public void SetVolume(float value)
+    {
+        volume = value;
     }
 
 }

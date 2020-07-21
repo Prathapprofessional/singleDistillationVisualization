@@ -32,7 +32,7 @@ public class ControlData : MonoBehaviour
     public ExpandDetails expandDetails;
     public ExpandGraph expandgraph;
 
-    public LiquidLevelAndColour liquidLevelAndColour; 
+    public LevelAndColourManager liquidLevelAndColour; 
     public ControlAnimation controlAnimation;
 
     public Button PlayPauseButton;
@@ -131,10 +131,10 @@ public class ControlData : MonoBehaviour
 
         for (int i=0; i < totalNumberOfValues; i++)
         {
-            float x2 = 1 - x1;
-            float y1 = w12 * (x1 / (1 + (w12 - 1) * x1));
-            float y2 = 1 - (w12 * (x1 / (1 + (w12 - 1) * x1)));
-            float NLNL0 = Mathf.Pow((x1 / x1Original), (1 / (w12 - 1))) * Mathf.Pow(((1 - x1) / (1 - x1Original)), (w12 / (1 - w12)));
+            float x2 = Formulas.x2(x1); 
+            float y1 = Formulas.y1(x1);
+            float y2 = Formulas.y2(x1);
+            float NLNL0 = Formulas.NLNL0(x1Original, x1);
 
             DataClass dataObject = new DataClass(x1, x2, y1, y2, NLNL0);
             dataArray[i] = dataObject;

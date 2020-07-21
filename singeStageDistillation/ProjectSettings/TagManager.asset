@@ -41,6 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: GraphLines
+    uniqueID: 1780846631
+    locked: 0
   - name: Liquid
     uniqueID: 441811219
     locked: 0

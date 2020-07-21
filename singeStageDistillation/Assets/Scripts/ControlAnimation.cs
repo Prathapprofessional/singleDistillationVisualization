@@ -48,7 +48,7 @@ public class ControlAnimation : MonoBehaviour
     public void onSkipButtonPressed()
     {
         _allAnimationsNotStarted = false; 
-        inputLiquid.HeatLiquid(false);
+ 
         PlayAllAnimationIfNotPlaying();
         processDetail.setName("Output Dropping");
         skipButton.SetActive(false);
@@ -141,7 +141,7 @@ public class ControlAnimation : MonoBehaviour
 
     void Heating()
     {
-        inputLiquid.HeatLiquid(true); 
+        
     }
 
     void Boiling()
@@ -170,16 +170,18 @@ public class ControlAnimation : MonoBehaviour
 
     void Condensed()
     {
-        basicAnimationEffects[5].Play(); //Condensed Liquid moving down 
+        basicAnimationEffects[5].Play();
+        basicAnimationEffects[6].Play();//Condensed Liquid moving down 
         basicAnimationEffectsStatus[5] = true;
+        basicAnimationEffectsStatus[6] = true;
     }
 
     void OutputLiquidDropping()
     {
         skipButton.SetActive(false);
         controlData.StartData(); 
-        basicAnimationEffects[6].Play(); //Droplets 
-        basicAnimationEffectsStatus[6] = true;
+        basicAnimationEffects[7].Play(); //Droplets 
+        basicAnimationEffectsStatus[7] = true;
     }
 
     void PlayAllAnimationIfNotPlaying()
@@ -196,7 +198,7 @@ public class ControlAnimation : MonoBehaviour
 
     public void PauseAllAnimation()
     {
-        inputLiquid.HeatLiquid(false);
+    
         foreach (ParticleSystem particleSystem in basicAnimationEffects)
         {
             if (particleSystem.isPlaying)
@@ -208,7 +210,7 @@ public class ControlAnimation : MonoBehaviour
 
     public void ResumeAllAnimation()
     {
-        inputLiquid.HeatLiquid(true);
+       
         for (int i = 0; i < basicAnimationEffects.Length; i++)
         {
             if (basicAnimationEffectsStatus[i])
@@ -220,7 +222,7 @@ public class ControlAnimation : MonoBehaviour
 
     void StopAllAnimation()
     {
-        inputLiquid.HeatLiquid(false);
+     
         foreach (ParticleSystem particleSystem in basicAnimationEffects)
         {
             particleSystem.Play();
