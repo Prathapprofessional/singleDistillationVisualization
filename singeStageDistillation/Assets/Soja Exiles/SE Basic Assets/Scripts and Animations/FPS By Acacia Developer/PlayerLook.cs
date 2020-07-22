@@ -11,6 +11,9 @@ public class PlayerLook : MonoBehaviour
 
     private float xAxisClamp;
 
+    //For Joystick Movement
+    public Joystick RotationJoystick; 
+
     private void Awake()
     {
         xAxisClamp = 0.0f;
@@ -29,8 +32,22 @@ public class PlayerLook : MonoBehaviour
 
     private void CameraRotation()
     {
-        float mouseX = Input.GetAxis(mouseXInputName) * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis(mouseYInputName) * mouseSensitivity * Time.deltaTime;
+        //For Joystick Movement
+        float mouseX;
+        float mouseY;
+
+#if UNITY_ANDROID && !UNITY_EDITOR
+        mouseX = RotationJoystick.Horizontal * mouseSensitivity * Time.deltaTime;
+        mouseY = RotationJoystick.Vertical * mouseSensitivity * Time.deltaTime;
+#endif
+#if UNITY_EDITOR
+        mouseX = Input.GetAxis(mouseXInputName) * mouseSensitivity * Time.deltaTime;
+        mouseY = Input.GetAxis(mouseYInputName) * mouseSensitivity * Time.deltaTime;
+#endif
+#if UNITY_STANDALONE
+        mouseX = Input.GetAxis(mouseXInputName) * mouseSensitivity * Time.deltaTime;
+        mouseY = Input.GetAxis(mouseYInputName) * mouseSensitivity * Time.deltaTime;
+#endif
 
         xAxisClamp += mouseY;
 

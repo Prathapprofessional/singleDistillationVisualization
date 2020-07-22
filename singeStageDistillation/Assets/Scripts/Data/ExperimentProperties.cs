@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExperimentProperties : MonoBehaviour
+public class ExperimentProperties 
 {
     float x1;
     float x2;

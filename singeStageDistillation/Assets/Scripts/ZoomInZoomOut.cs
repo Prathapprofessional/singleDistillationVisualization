@@ -113,7 +113,10 @@ public class ZoomInZoomOut : MonoBehaviour
 
     public void setOriginalPosition()
     {
-        mainCamera.orthographicSize = originalCameraZoom;
-        transform.position = originalCameraPosition; 
+        if (this.gameObject.active)
+        {
+            mainCamera.orthographicSize = originalCameraZoom;
+            transform.position = originalCameraPosition;
+        }
     }
 }

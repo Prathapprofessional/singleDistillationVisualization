@@ -15,6 +15,9 @@ public class UIManager : MonoBehaviour
 
     public ProgressSlider progressSlider;
 
+    public GameObject rotationJoystick;
+    public GameObject translationJoystick;
+
     // Start is called before the first frame update
     void Start()
     {

@@ -22,8 +22,10 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float jumpMultiplier;
     [SerializeField] private KeyCode jumpKey;
 
-
     private bool isJumping;
+
+    //For Joystick Movement 
+    public Joystick TranslationJoystick; 
 
     private void Awake()
     {
@@ -40,8 +42,12 @@ public class PlayerMove : MonoBehaviour
         float horizInput = Input.GetAxis(horizontalInputName);
         float vertInput = Input.GetAxis(verticalInputName);
 
-        Vector3 forwardMovement = transform.forward * vertInput;
-        Vector3 rightMovement = transform.right * horizInput;
+        //For Joystick Movement
+        float horizInputJoystick = TranslationJoystick.Horizontal;
+        float vertInputJoystick = TranslationJoystick.Vertical;
+
+        Vector3 forwardMovement = transform.forward * (vertInput + vertInputJoystick);
+        Vector3 rightMovement = transform.right * (horizInput + horizInputJoystick);
 
 
         charController.SimpleMove(Vector3.ClampMagnitude(forwardMovement + rightMovement, 1.0f) * movementSpeed);

@@ -31,8 +31,8 @@ public class DisplayCamera : MonoBehaviour
             isActiveFP = firstPersonCamera.activeSelf;
             bool isActiveMain;
             isActiveMain = mainCamera.activeSelf;
-            print(isActiveFP);
-            print(isActiveMain);
+            //print(isActiveFP);
+            //print(isActiveMain);
             //Set FPS camera
             firstPersonCamera.SetActive(!isActiveFP);
             firstPersonAudioLis.enabled = !isActiveFP;

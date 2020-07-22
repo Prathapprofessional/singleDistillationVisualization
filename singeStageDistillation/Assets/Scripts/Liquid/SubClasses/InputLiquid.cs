@@ -116,7 +116,7 @@ public class InputLiquid : Liquid
             renderLiquid.material.SetFloat("_Rim", rimValue);
             if (increasinRimLine)
             {
-                if (rimPowerValue < 1f)
+                if (rimPowerValue < .5f)
                 {
                     rimPowerValue = rimPowerValue + (changeRimPowerValue);
                 }
