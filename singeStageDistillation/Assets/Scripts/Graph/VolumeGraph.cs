@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class VolumeGraph : Graph
 {
-    public Manager manager; 
-
     public override void SetUpForCalculation(int index)
     {
         CalculateLine(manager.experimentData.data[index].GetNLNL0(), manager.experimentData.data[index].GetVolume(), 0);

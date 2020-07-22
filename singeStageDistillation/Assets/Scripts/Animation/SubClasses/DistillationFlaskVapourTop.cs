@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class DistillationFlaskVapourTop : AnimationEffect
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void SetAmountAccordingToData(int index)
     {
-        
-    }
+        //Emit
+        float visibility;
+        ParticleSystemRenderer psr = GetComponent<ParticleSystemRenderer>();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (index < (manager.experimentData.totalNumberOfValues / 3))
+        {
+            visibility = (((.25f - .035f) * (index - 0)) / (manager.experimentData.totalNumberOfValues - 0)) + .035f;
+        }
+        else
+        {
+            visibility = (((.035f - .25f) * (index - 0)) / (manager.experimentData.totalNumberOfValues - 0)) + .25f;
+        }
+
+        psr.material.SetColor("_TintColor", new Color(manager.experimentData.data[index].GetY2(), manager.experimentData.data[index].GetY1(), 0, visibility));
     }
 }

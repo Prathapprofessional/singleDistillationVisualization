@@ -5,8 +5,6 @@ using UnityEngine;
 public class DataGraph : Graph
 {
 
-    public Manager manager; 
-
     public override void SetUpForCalculation(int index)
     {
         CalculateLine(manager.experimentData.data[index].GetNLNL0(), manager.experimentData.data[index].GetX1(), 0);

@@ -111,4 +111,10 @@ public class AnimationManager : MonoBehaviour
     {
         foreach (AnimationEffect animation in animations) { animation.PlayIfNotPlaying(); }
     }
+
+    //Amount Of Animation
+    public void SetAmount(int index)
+    {
+        foreach (AnimationEffect animation in animations) { animation.SetAmountAccordingToData(index); }
+    }
 }

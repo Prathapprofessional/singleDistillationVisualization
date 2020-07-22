@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Bubbles : AnimationEffect
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void SetAmountAccordingToData(int index)
     {
-        
-    }
+        var main = particleSystem.main;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (index < (manager.experimentData.totalNumberOfValues / 3))
+        {
+
+        }
+        else
+        {
+            main.maxParticles = (((minParticles - maxParticles) * (index - 0)) / (manager.experimentData.totalNumberOfValues - 0)) + maxParticles;
+        }
     }
 }

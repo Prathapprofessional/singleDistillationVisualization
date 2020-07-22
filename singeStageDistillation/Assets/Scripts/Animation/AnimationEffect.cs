@@ -5,6 +5,13 @@ using UnityEngine;
 public class AnimationEffect : MonoBehaviour
 {
     public ParticleSystem particleSystem;
+    public Manager manager; 
+
+    public int minEmission = 0;
+    public int maxEmission = 0;
+
+    public int minParticles = 0;
+    public int maxParticles = 0;
 
     protected bool status = false;
 
@@ -59,4 +66,8 @@ public class AnimationEffect : MonoBehaviour
         status = false; 
     }
 
+    public virtual void SetAmountAccordingToData(int index)
+    {
+
+    }
 }

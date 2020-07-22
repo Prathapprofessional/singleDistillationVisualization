@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class Drops : AnimationEffect
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void SetAmountAccordingToData(int index)
     {
-        
-    }
+        //Emit
+        var emission = particleSystem.emission;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if(index < (manager.experimentData.totalNumberOfValues/3))
+        {
+            emission.rateOverTime = (((maxEmission - (minEmission + 1)) * (index - 0)) / (manager.experimentData.totalNumberOfValues - 0)) + (minEmission + 1);
+        }
+        else
+        {
+            emission.rateOverTime = (((minEmission - maxEmission) * (index - 0)) / (manager.experimentData.totalNumberOfValues - 0)) + maxEmission;
+        }
     }
 }

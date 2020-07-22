@@ -43,6 +43,7 @@ public class DataManager : MonoBehaviour
         manager.levelAndColourManager.SetLevelAndColour(index);
         manager.graphManager.SetGraph(index, _progressSliderClicked);
         manager.uIManager.SetProgressSliderFromDataProgress(index);
+        manager.animationManager.SetAmount(index);
 
         _progressSliderClicked = false; 
     }

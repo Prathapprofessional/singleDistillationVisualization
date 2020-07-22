@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Graph : MonoBehaviour
 {
+    public Manager manager;
+
     public Transform positionOrigin;
     public Transform positionX0;
     public Transform position0Y;

@@ -965,8 +965,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d912feacf96ae9241b6135e5f75dbedc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  X1oText: {fileID: 919246182}
-  X2oText: {fileID: 1907456173}
 --- !u!1 &80027688
 GameObject:
   m_ObjectHideFlags: 0
@@ -6641,6 +6639,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleSystem: {fileID: 145124280}
+  manager: {fileID: 0}
+  minEmission: 0
+  maxEmission: 0
+  minParticles: 0
+  maxParticles: 0
 --- !u!1 &146491743
 GameObject:
   m_ObjectHideFlags: 0
@@ -9731,7 +9734,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 50
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -13848,6 +13851,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleSystem: {fileID: 402362170}
+  manager: {fileID: 1496751992}
+  minEmission: 0
+  maxEmission: 0
+  minParticles: 5
+  maxParticles: 50
 --- !u!1 &403716059
 GameObject:
   m_ObjectHideFlags: 0
@@ -17741,12 +17749,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1da139e90530fe46b5cc89064edd117, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 1496751992}
   positionOrigin: {fileID: 994773421}
   positionX0: {fileID: 17195098}
   position0Y: {fileID: 1285853683}
   lineRenderer:
   - {fileID: 1411768319}
-  manager: {fileID: 1496751992}
 --- !u!222 &806876901
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -24584,6 +24592,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleSystem: {fileID: 943137694}
+  manager: {fileID: 1496751992}
+  minEmission: 0
+  maxEmission: 0
+  minParticles: 0
+  maxParticles: 0
 --- !u!1 &944040128
 GameObject:
   m_ObjectHideFlags: 0
@@ -29467,6 +29480,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleSystem: {fileID: 951818555}
+  manager: {fileID: 1496751992}
+  minEmission: 0
+  maxEmission: 0
+  minParticles: 0
+  maxParticles: 0
 --- !u!1 &952686224
 GameObject:
   m_ObjectHideFlags: 0
@@ -33340,7 +33358,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 25
+    maxNumParticles: 3
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -33606,7 +33624,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 1
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -37444,6 +37462,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleSystem: {fileID: 1097517070}
+  manager: {fileID: 1496751992}
+  minEmission: 0
+  maxEmission: 5
+  minParticles: 3
+  maxParticles: 25
 --- !u!1 &1101041612
 GameObject:
   m_ObjectHideFlags: 0
@@ -40049,7 +40072,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 10
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -40315,7 +40338,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 5
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -44167,6 +44190,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleSystem: {fileID: 1245580627}
+  manager: {fileID: 1496751992}
+  minEmission: 5
+  maxEmission: 20
+  minParticles: 10
+  maxParticles: 50
 --- !u!1 &1250995600
 GameObject:
   m_ObjectHideFlags: 0
@@ -48555,6 +48583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15ce0ecf146020e4bb77f59d11140843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 1496751992}
   positionOrigin: {fileID: 575521836}
   positionX0: {fileID: 638639959}
   position0Y: {fileID: 101037540}
@@ -48563,7 +48592,6 @@ MonoBehaviour:
   - {fileID: 1983755252}
   - {fileID: 1904059263}
   - {fileID: 381919855}
-  manager: {fileID: 1496751992}
 --- !u!222 &1579049908
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -53720,6 +53748,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleSystem: {fileID: 1612405764}
+  manager: {fileID: 1496751992}
+  minEmission: 0
+  maxEmission: 0
+  minParticles: 0
+  maxParticles: 0
 --- !u!1 &1613893639
 GameObject:
   m_ObjectHideFlags: 0
@@ -60502,6 +60535,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleSystem: {fileID: 1785482014}
+  manager: {fileID: 0}
+  minEmission: 0
+  maxEmission: 0
+  minParticles: 0
+  maxParticles: 0
 --- !u!1 &1787848076
 GameObject:
   m_ObjectHideFlags: 0
@@ -62087,9 +62125,9 @@ ParticleSystem:
     serializedVersion: 4
     rateOverTime:
       serializedVersion: 2
-      minMaxState: 3
-      scalar: 8
-      minScalar: 2
+      minMaxState: 0
+      scalar: 1
+      minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -65941,6 +65979,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleSystem: {fileID: 1858659701}
+  manager: {fileID: 1496751992}
+  minEmission: 0
+  maxEmission: 8
+  minParticles: 0
+  maxParticles: 0
 --- !u!1 &1864924379
 GameObject:
   m_ObjectHideFlags: 0
