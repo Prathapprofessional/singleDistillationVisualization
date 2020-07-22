@@ -56,6 +56,12 @@ public class LiquidManager : MonoBehaviour
 
     public void onRestartButtonPressed()
     {
+        inputLiquid.BoilUnboilLiquid(true, true);
+    }
 
+    //End Of Process
+    public void SetEndOfProcessRequired()
+    {
+        inputLiquid.BoilUnboilLiquid(false, false);
     }
 }

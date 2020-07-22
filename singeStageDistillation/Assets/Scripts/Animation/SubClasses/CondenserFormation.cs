@@ -7,6 +7,7 @@ public class CondenserFormation : AnimationEffect
     public override void SetAmountAccordingToData(int index)
     {
         //Emit
+        index = index + 1;
         var emission = particleSystem.emission;
         var main = particleSystem.main;
 

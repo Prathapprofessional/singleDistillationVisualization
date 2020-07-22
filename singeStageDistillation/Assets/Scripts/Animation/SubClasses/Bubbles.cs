@@ -6,6 +6,7 @@ public class Bubbles : AnimationEffect
 {
     public override void SetAmountAccordingToData(int index)
     {
+        index = index + 1;
         var main = particleSystem.main;
 
         if (index < (manager.experimentData.totalNumberOfValues / 3))

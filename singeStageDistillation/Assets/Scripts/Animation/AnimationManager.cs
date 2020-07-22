@@ -117,4 +117,10 @@ public class AnimationManager : MonoBehaviour
     {
         foreach (AnimationEffect animation in animations) { animation.SetAmountAccordingToData(index); }
     }
+
+    //End Of Process
+    public void SetEndOfProcessRequired()
+    {
+        StopAllAnimation(); 
+    }
 }

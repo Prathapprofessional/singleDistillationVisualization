@@ -65,9 +65,9 @@ public class UIManager : MonoBehaviour
 
     public void onRestartButtonPressed()
     {
-        restartButton.Hide(); 
-        skipButton.Hide();
-        parametersButton.Hide();
+        restartButton.Hide();
+        playPauseResumeButton.Show();
+        progressSlider.Show();
     }
 
     //Progress Slider 
@@ -83,6 +83,15 @@ public class UIManager : MonoBehaviour
 
     public void SetMaxOfProgressSlider(float value)
     {
-        progressSlider.GetComponentInChildren<Slider>().maxValue = value;
+        progressSlider.GetComponentInChildren<Slider>().maxValue = value-1;
+    }
+
+    //End Of Process
+    public void SetEndOfProcessRequired()
+    {
+        restartButton.Show();
+        playPauseResumeButton.SwitchToPlayIcon();
+        playPauseResumeButton.Hide();
+        progressSlider.Hide(); 
     }
 }

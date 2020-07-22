@@ -114,9 +114,9 @@ public class LevelAndColourManager : MonoBehaviour
         outputLiquidShader.material.SetColor("_Tint", new Color(colourx, 1f, colourz, .6f));
  
         bubbles.material.SetColor("_TintColor", new Color(x2, x1, 0, .6f));
-        vapourShader.material.SetColor("_TintColor", new Color(colourx, coloury, colourz, .13f));
-        vapourTopShader.material.SetColor("_TintColor", new Color(colourx, coloury, colourz, .13f));
-        vapourCondenserShader.material.SetColor("_TintColor", new Color(colourx, coloury, colourz, .13f));
+        vapourShader.material.SetColor("_TintColor", new Color(colourx, coloury, colourz, .035f));
+        vapourTopShader.material.SetColor("_TintColor", new Color(colourx, coloury, colourz, .035f));
+        vapourCondenserShader.material.SetColor("_TintColor", new Color(colourx, coloury, colourz, .030f));
 
         formationCondenserShader.material.SetColor("_TintColor", new Color(colourx, coloury, colourz, .6f));
         dropletCondenserShader.material.SetColor("_TintColor", new Color(colourx, coloury, colourz, .6f));
@@ -132,9 +132,9 @@ public class LevelAndColourManager : MonoBehaviour
         outputLiquidShader.material.SetColor("_Tint", new Color(1, 1, 1, 1));
 
         bubbles.material.SetColor("_TintColor", new Color(1, 1, 1, .6f));
-        vapourShader.material.SetColor("_TintColor", new Color(1, 1, 1, .13f));
-        vapourTopShader.material.SetColor("_TintColor", new Color(1, 1, 1, .13f));
-        vapourCondenserShader.material.SetColor("_TintColor", new Color(1, 1, 1, .13f));
+        vapourShader.material.SetColor("_TintColor", new Color(1, 1, 1, .035f));
+        vapourTopShader.material.SetColor("_TintColor", new Color(1, 1, 1, .035f));
+        vapourCondenserShader.material.SetColor("_TintColor", new Color(1, 1, 1, .030f));
 
         formationCondenserShader.material.SetColor("_TintColor", new Color(1, 1, 1, .6f));
         dropletCondenserShader.material.SetColor("_TintColor", new Color(1, 1, 1, .6f));

@@ -12,7 +12,7 @@ public class DataManager : MonoBehaviour
     int currentDataIndex = 0;
     int countFrames = 0;
 
-    bool _progressSliderClicked = false; 
+    bool _progressSliderClicked = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +32,10 @@ public class DataManager : MonoBehaviour
                     currentDataIndex++;
                     countFrames = 0;
                 }
+                else
+                {
+                    SetEndOfProcessRequired();
+                }
             }
             countFrames++;
         }
@@ -45,7 +49,14 @@ public class DataManager : MonoBehaviour
         manager.uIManager.SetProgressSliderFromDataProgress(index);
         manager.animationManager.SetAmount(index);
 
-        _progressSliderClicked = false; 
+        _progressSliderClicked = false;
+    }
+
+    public void SetEndOfProcessRequired()
+    {
+        manager.uIManager.SetEndOfProcessRequired();
+        manager.animationManager.SetEndOfProcessRequired();
+        manager.liquidManager.SetEndOfProcessRequired();
     }
 
     public void onPlayPauseResumeButtonPressed()
@@ -57,17 +68,17 @@ public class DataManager : MonoBehaviour
     {
         _dataStarted = false;
         countFrames = 0;
-        currentDataIndex = 0; 
+        currentDataIndex = 0;
     }
 
     public void onSkipButtonPressed()
     {
-        StartData(); 
+        StartData();
     }
 
     public void onRestartButtonPressed()
     {
-
+        currentDataIndex = 0; 
     }
 
     public void StartData()
@@ -80,4 +91,5 @@ public class DataManager : MonoBehaviour
         currentDataIndex = (int)value;
         _progressSliderClicked = true;
     }
+
 }

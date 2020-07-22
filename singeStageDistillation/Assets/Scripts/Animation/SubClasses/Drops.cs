@@ -6,6 +6,7 @@ public class Drops : AnimationEffect
 {
     public override void SetAmountAccordingToData(int index)
     {
+        index = index + 1; 
         //Emit
         var emission = particleSystem.emission;
 
