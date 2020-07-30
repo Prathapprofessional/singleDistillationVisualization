@@ -40,9 +40,7 @@ public class AnimationManager : MonoBehaviour
     {
         if (currentAnimationIndex >= animations.Length)
         {
-            currentAnimationIndex = 0;
-            countFrames = 301; 
-            _allAnimationsNotStarted = false;
+            ResetAnimationStartingProperties(); 
 
             //End Of Animation - Data Started 
             manager.dataManager.StartData();
@@ -80,11 +78,13 @@ public class AnimationManager : MonoBehaviour
     public void onStopButtonPressed()
     {
         StopAllAnimation();
+        ResetAnimationStartingProperties();
     }
 
     public void onSkipButtonPressed()
     {
         PlayAllAnimationIfNotPlaying();
+        ResetAnimationStartingProperties();
     }
 
     public void onRestartButtonPressed()
@@ -123,5 +123,12 @@ public class AnimationManager : MonoBehaviour
     public void SetEndOfProcessRequired()
     {
         StopAllAnimation(); 
+    }
+
+    private void ResetAnimationStartingProperties()
+    {
+        currentAnimationIndex = 0;
+        countFrames = 301;
+        _allAnimationsNotStarted = false;
     }
 }
