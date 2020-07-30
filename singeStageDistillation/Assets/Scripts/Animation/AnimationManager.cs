@@ -41,6 +41,7 @@ public class AnimationManager : MonoBehaviour
         if (currentAnimationIndex >= animations.Length)
         {
             currentAnimationIndex = 0;
+            countFrames = 301; 
             _allAnimationsNotStarted = false;
 
             //End Of Animation - Data Started 
