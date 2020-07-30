@@ -13599,7 +13599,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -81.199936, y: -0.1451416}
+  m_AnchoredPosition: {x: -122, y: -0.1451416}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &424960758
@@ -14596,8 +14596,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -31096,7 +31096,7 @@ PrefabInstance:
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -303
+      value: -287
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}
@@ -32031,7 +32031,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1097517067}
   m_LocalRotation: {x: 0.04705817, y: 0.70553917, z: -0.7055392, w: -0.047058154}
-  m_LocalPosition: {x: 8.55, y: 5.43, z: -4.36}
+  m_LocalPosition: {x: 8.55, y: 5.43, z: -4.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 456398725}
@@ -43712,7 +43712,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1245580625}
   m_LocalRotation: {x: -0.457167, y: 0.53933936, z: -0.5397588, w: 0.45691556}
-  m_LocalPosition: {x: 1.56, y: 8.36, z: -4.3564453}
+  m_LocalPosition: {x: 1.57, y: 8.45, z: -5.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 456398725}
@@ -47110,7 +47110,7 @@ PrefabInstance:
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 307
+      value: 289
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}
@@ -54503,7 +54503,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 708537583}
   m_FillRect: {fileID: 1731303992}
   m_HandleRect: {fileID: 708537582}
@@ -61530,6 +61530,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manager: {fileID: 1496751992}
   displayCamera: {fileID: 445191956}
+  text2D3D: {fileID: 488396240}
 --- !u!1 &1853390878
 GameObject:
   m_ObjectHideFlags: 0
@@ -69582,6 +69583,11 @@ PrefabInstance:
       propertyPath: TranslationJoystick
       value: 
       objectReference: {fileID: 513753997}
+    - target: {fileID: 4098294239303771257, guid: 4e0c243f1212ecb47a726f0b4d8ed48b,
+        type: 3}
+      propertyPath: joystickSpeed
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4098821735218456207, guid: 4e0c243f1212ecb47a726f0b4d8ed48b,
         type: 3}
       propertyPath: RotationJoystick
@@ -70576,7 +70582,7 @@ Transform:
   m_GameObject: {fileID: 759748891628681113}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
   m_LocalPosition: {x: 8.26, y: 0.75, z: -4.9900026}
-  m_LocalScale: {x: 94.2122, y: 86.25, z: 90}
+  m_LocalScale: {x: 102.5441, y: 86.25, z: 103.5}
   m_Children: []
   m_Father: {fileID: 756226337}
   m_RootOrder: 1

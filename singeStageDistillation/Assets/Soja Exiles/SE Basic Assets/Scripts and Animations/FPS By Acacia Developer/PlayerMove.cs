@@ -25,7 +25,8 @@ public class PlayerMove : MonoBehaviour
     private bool isJumping;
 
     //For Joystick Movement 
-    public Joystick TranslationJoystick; 
+    public Joystick TranslationJoystick;
+    public float joystickSpeed; 
 
     private void Awake()
     {
@@ -43,8 +44,8 @@ public class PlayerMove : MonoBehaviour
         float vertInput = Input.GetAxis(verticalInputName);
 
         //For Joystick Movement
-        float horizInputJoystick = TranslationJoystick.Horizontal;
-        float vertInputJoystick = TranslationJoystick.Vertical;
+        float horizInputJoystick = TranslationJoystick.Horizontal * joystickSpeed;
+        float vertInputJoystick = TranslationJoystick.Vertical * joystickSpeed;
 
         Vector3 forwardMovement = transform.forward * (vertInput + vertInputJoystick);
         Vector3 rightMovement = transform.right * (horizInput + horizInputJoystick);
