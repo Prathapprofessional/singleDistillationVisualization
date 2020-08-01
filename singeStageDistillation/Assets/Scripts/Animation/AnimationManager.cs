@@ -89,10 +89,15 @@ public class AnimationManager : MonoBehaviour
 
     public void onRestartButtonPressed()
     {
-        PlayAllAnimationIfNotPlaying();
+        PlayAllAnimation();
     }
 
     //Methods Related To Animation
+    void PlayAllAnimation()
+    {
+        foreach (AnimationEffect animation in animations) { animation.Play(); }
+    }
+
     public void PauseAllAnimation()
     {
         foreach (AnimationEffect animation in animations) { animation.Pause(); }
