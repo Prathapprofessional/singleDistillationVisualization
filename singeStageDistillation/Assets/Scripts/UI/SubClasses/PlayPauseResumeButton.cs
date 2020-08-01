@@ -41,4 +41,11 @@ public class PlayPauseResumeButton : UIObject
         image.sprite = playIcon;
         _playing = false;
     }
+
+    //Change to Pause icon on Restart button pressed 
+    public void SwitchToPauseIcon()
+    {
+        image.sprite = pauseIcon;
+        _playing = true;
+    }
 }

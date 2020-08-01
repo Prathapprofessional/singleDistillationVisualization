@@ -52,8 +52,10 @@ public class UIManager : MonoBehaviour
     public void onStopButtonPressed()
     {
         playPauseResumeButton.SwitchToPlayIcon();
+        playPauseResumeButton.Show();
         stopButton.Hide();
         skipButton.Hide();
+        restartButton.Hide(); 
         parametersButton.Show();
 
         SetProgressSliderFromDataProgress(0);
@@ -70,6 +72,7 @@ public class UIManager : MonoBehaviour
     {
         restartButton.Hide();
         playPauseResumeButton.Show();
+        playPauseResumeButton.SwitchToPauseIcon();
         progressSlider.Show();
     }
 
