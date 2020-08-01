@@ -42,7 +42,9 @@ public class LevelAndColourManager : MonoBehaviour
                 manager.experimentData.data[0].GetX1(),
                 manager.experimentData.data[0].GetX2(),
                 manager.experimentData.data[0].GetY1(),
-                manager.experimentData.data[0].GetY2());
+                manager.experimentData.data[0].GetY2(),
+                manager.experimentData.data[0].GetX1C(),
+                manager.experimentData.data[0].GetX2C());
         }
         else if (Manager.GetStartedStatus() & Manager.GetPlayingStatus()) //Pause
         {
@@ -60,7 +62,10 @@ public class LevelAndColourManager : MonoBehaviour
             manager.experimentData.data[0].GetX1(),
             manager.experimentData.data[0].GetX2(),
             manager.experimentData.data[0].GetY1(),
-            manager.experimentData.data[0].GetY2());
+            manager.experimentData.data[0].GetY2(),
+            manager.experimentData.data[0].GetX1C(),
+            manager.experimentData.data[0].GetX2C()
+            );
 
         SetOriginalColourAccordingToData();
     }
@@ -81,15 +86,17 @@ public class LevelAndColourManager : MonoBehaviour
             manager.experimentData.data[index].GetX1(),
             manager.experimentData.data[index].GetX2(),
             manager.experimentData.data[index].GetY1(),
-            manager.experimentData.data[index].GetY2());
+            manager.experimentData.data[index].GetY2(),
+            manager.experimentData.data[index].GetX1C(),
+            manager.experimentData.data[index].GetX2C());
     }
 
-    public void SetAccordingToData(float x0, float x1, float x2, float y1, float y2)
+    public void SetAccordingToData(float x0, float x1, float x2, float y1, float y2, float x1c, float x2c)
     {
         float percentDifferenceInConcentration = (x0 - x1) / (x0 - 0f);
 
         SetLevelAccordingToData(percentDifferenceInConcentration);
-        SetColourAccordingToData(x1, x2, y1, y2); 
+        SetColourAccordingToData(x1, x2, y1, y2, x1c, x2c); 
     }
 
     private void SetLevelAccordingToData(float percentDifferenceInConcentration)
@@ -99,7 +106,7 @@ public class LevelAndColourManager : MonoBehaviour
         controlVapourVesselEffect.SetSizeAndPositionFromData(percentDifferenceInConcentration);
     }
 
-    private void SetColourAccordingToData(float x1, float x2, float y1, float y2)
+    private void SetColourAccordingToData(float x1, float x2, float y1, float y2, float x1c, float x2c)
     {
         float colourx = y2;
         float coloury = y1;
@@ -111,7 +118,7 @@ public class LevelAndColourManager : MonoBehaviour
         inputLiquidShader.material.SetColor("_RimColor", new Color(x2 + .2f, x1 + .2f, 0 + .2f, 1));
         boilShader.SetColor("_Color", new Color(x2, x1, 0, .6f));
 
-        outputLiquidShader.material.SetColor("_Tint", new Color(colourx, 1f, colourz, .6f));
+        outputLiquidShader.material.SetColor("_Tint", new Color(x2c, x1c, colourz, .6f));
  
         bubbles.material.SetColor("_TintColor", new Color(x2, x1, 0, .6f));
         vapourShader.material.SetColor("_TintColor", new Color(colourx, coloury, colourz, .035f));
