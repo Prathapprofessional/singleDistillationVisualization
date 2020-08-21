@@ -12,8 +12,9 @@ public class ExperimentProperties
     float x1c;
     float x2c;
     float volume;
+    float temperature;
 
-    public ExperimentProperties(float _x1, float _x2, float _y1, float _y2, float _NLNL0, float _x1c, float _x2c, float _volume)
+    public ExperimentProperties(float _x1, float _x2, float _y1, float _y2, float _NLNL0, float _x1c, float _x2c, float _volume, float _temperature)
     {
         x1 = _x1;
         x2 = _x2;
@@ -23,6 +24,7 @@ public class ExperimentProperties
         x1c = _x1c;
         x2c = _x2c;
         volume = _volume;
+        temperature = _temperature;
     }
 
     public float GetX1()
@@ -65,6 +67,11 @@ public class ExperimentProperties
         return volume;
     }
 
+    public float GetTemperature()
+    {
+        return temperature;
+    }
+
     public void SetX1(float value)
     {
         x1 = value;
@@ -103,6 +110,11 @@ public class ExperimentProperties
     public void SetVolume(float value)
     {
         volume = value;
+    }
+
+    public void SetTemperature(float value)
+    {
+        temperature = value;
     }
 
 }

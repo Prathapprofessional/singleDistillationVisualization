@@ -42,8 +42,9 @@ public class ExperimentData : MonoBehaviour
             float x1c = Formulas.x1c(x10, x1);
             float x2c = Formulas.x2c(x10, x1);
             float volume = Formulas.volume(x10, x1, x2, initialVolume);
+            float temperature = Formulas.TemperatureSetting(x1);
 
-            ExperimentProperties experimentDataAtThisStage = new ExperimentProperties(x1, x2, y1, y2, NLNL0, x1c, x2c, volume);
+            ExperimentProperties experimentDataAtThisStage = new ExperimentProperties(x1, x2, y1, y2, NLNL0, x1c, x2c, volume, temperature);
             data[i] = experimentDataAtThisStage;
 
             //Reducing x1 

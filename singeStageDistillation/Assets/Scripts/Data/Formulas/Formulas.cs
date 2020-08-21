@@ -72,4 +72,74 @@ public class Formulas
         return maximumLiquidLevel - (((maximumVolume - currentVolume) / (maximumVolume - minimumVolume)) * (maximumLiquidLevel - minimumLiquidLevel)); 
     }
 
+    public static float TemperatureSetting(float X1)
+    {
+        float Temp;
+        if (X1 >= 0.98)
+            Temp = 80;
+        else if (X1 < 0.98 && X1 >= 0.93)
+            Temp = 81;
+        else if (X1 < 0.93 && X1 >= 0.88)
+            Temp = 82;
+        else if (X1 < 0.88 && X1 >= 0.83)
+            Temp = 83;
+        else if (X1 < 0.83 && X1 >= 0.78)
+            Temp = 84;
+        else if (X1 < 0.78 && X1 >= 0.74)
+            Temp = 85;
+        else if (X1 < 0.74 && X1 >= 0.70)
+            Temp = 86;
+        else if (X1 < 0.70 && X1 >= 0.66)
+            Temp = 87;
+        else if (X1 < 0.66 && X1 >= 0.62)
+            Temp = 88;
+        else if (X1 < 0.62 && X1 >= 0.59)
+            Temp = 89;
+        else if (X1 < 0.59 && X1 >= 0.55)
+            Temp = 90;
+        else if (X1 < 0.55 && X1 >= 0.51)
+            Temp = 91;
+        else if (X1 < 0.51 && X1 >= 0.48)
+            Temp = 92;
+        else if (X1 < 0.48 && X1 >= 0.44)
+            Temp = 93;
+        else if (X1 < 0.44 && X1 >= 0.42)
+            Temp = 94;
+        else if (X1 < 0.42 && X1 >= 0.39)
+            Temp = 95;
+        else if (X1 < 0.39 && X1 >= 0.35)
+            Temp = 96;
+        else if (X1 < 0.35 && X1 >= 0.32)
+            Temp = 97;
+        else if (X1 < 0.32 && X1 >= 0.30)
+            Temp = 98;
+        else if (X1 < 0.30 && X1 >= 0.27)
+            Temp = 99;
+        else if (X1 < 0.27 && X1 >= 0.24)
+            Temp = 100;
+        else if (X1 < 0.24 && X1 >= 0.21)
+            Temp = 101;
+        else if (X1 < 0.21 && X1 >= 0.18)
+            Temp = 102;
+        else if (X1 < 0.18 && X1 >= 0.15)
+            Temp = 103;
+        else if (X1 < 0.15 && X1 >= 0.13)
+            Temp = 104;
+        else if (X1 < 0.13 && X1 >= 0.11)
+            Temp = 105;
+        else if (X1 < 0.11 && X1 >= 0.09)
+            Temp = 106;
+        else if (X1 < 0.09 && X1 >= 0.06)
+            Temp = 107;
+        else if (X1 < 0.06 && X1 >= 0.04)
+            Temp = 108;
+        else if (X1 < 0.04 && X1 >= 0.02)
+            Temp = 109;
+        else if (X1 < 0.02 && X1 >= 0.008)
+            Temp = 110;
+        else
+            Temp = 111;
+
+        return Temp;
+    }
 }
