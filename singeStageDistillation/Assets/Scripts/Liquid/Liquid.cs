@@ -43,7 +43,7 @@ public class Liquid: MonoBehaviour
         liquidFilled = true;
     }
 
-    protected void FillLiquid(float value)
+    protected virtual void FillLiquid(float value)
     {
         if (fillLiquid && !reduceLiquid)
         {
@@ -100,6 +100,5 @@ public class Liquid: MonoBehaviour
         {
             liquidLevel = (liquidLevelMax - (percentDifferenceInConcentration * (liquidLevelMax - liquidLevelMin))); //example : (x-5)/(5-25) = 0.5 => ((0.5 * (5-25)) + 5)
         }
-
     }
 }

@@ -8,6 +8,7 @@ public class LevelAndColourManager : MonoBehaviour
 
     public InputLiquid inputLiquid;
     public OutputLiquid outputLiquid;
+    public ThermometerLiquid thermometerLiquid;
     public DistillationFlaskVapour controlVapourVesselEffect;
 
     public Renderer inputLiquidShader;
@@ -103,6 +104,7 @@ public class LevelAndColourManager : MonoBehaviour
     {
         inputLiquid.SetLevelAccordingToData(percentDifferenceInConcentration, true);
         outputLiquid.SetLevelAccordingToData(percentDifferenceInConcentration, false);
+        thermometerLiquid.SetLevelAccordingToData(percentDifferenceInConcentration, false); 
         controlVapourVesselEffect.SetSizeAndPositionFromData(percentDifferenceInConcentration);
     }
 

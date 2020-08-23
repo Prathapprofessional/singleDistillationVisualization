@@ -20,6 +20,7 @@ public class DataUIManager : MonoBehaviour
     public TextMeshProUGUI NLNL0Text;
     public TextMeshProUGUI volumeCurrentText;
     public TextMeshProUGUI x1cCurrentText;
+    public TextMeshProUGUI temperatureText;
 
     public void onPlayPauseResumeButtonPressed()
     {
@@ -51,6 +52,7 @@ public class DataUIManager : MonoBehaviour
         NLNL0Text.text = manager.experimentData.data[index].GetNLNL0().ToString("0.00");
         volumeCurrentText.text = manager.experimentData.data[index].GetVolume().ToString("0.00");
         x1cCurrentText.text = manager.experimentData.data[index].GetX1C().ToString("0.00");
+        temperatureText.text = manager.experimentData.data[index].GetTemperature().ToString() + "º C";
     }
 
     public void Setx10(float value)

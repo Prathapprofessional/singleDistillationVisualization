@@ -72,6 +72,11 @@ public class Formulas
         return maximumLiquidLevel - (((maximumVolume - currentVolume) / (maximumVolume - minimumVolume)) * (maximumLiquidLevel - minimumLiquidLevel)); 
     }
 
+    public static float RelatedWRTFraction(float currentFraction, float minimumLiquidLevel, float maximumLiquidLevel)
+    {
+        return maximumLiquidLevel - (((maximumVolume - currentFraction) / (maximumVolume - minimumVolume)) * (maximumLiquidLevel - minimumLiquidLevel));
+    }
+
     public static float TemperatureSetting(float X1)
     {
         float Temp;

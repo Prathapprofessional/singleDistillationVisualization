@@ -37846,6 +37846,7 @@ MonoBehaviour:
   NLNL0Text: {fileID: 1130179615}
   volumeCurrentText: {fileID: 1400865878}
   x1cCurrentText: {fileID: 973180321}
+  temperatureText: {fileID: 2085128928}
 --- !u!114 &1165173475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48315,6 +48316,7 @@ MonoBehaviour:
   manager: {fileID: 1496751992}
   inputLiquid: {fileID: 1061392896}
   outputLiquid: {fileID: 759748891628681114}
+  thermometerLiquid: {fileID: 1391823245}
   controlVapourVesselEffect: {fileID: 951818557}
   inputLiquidShader: {fileID: 1061392893}
   outputLiquidShader: {fileID: 8633547184688843532}
@@ -69310,7 +69312,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "111\xBA C"
+  m_text: "95\xBA C"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -69379,7 +69381,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 131.79062, w: 0}
   m_textInfo:
     textComponent: {fileID: 2085128928}
-    characterCount: 6
+    characterCount: 5
     spriteCount: 0
     spaceCount: 1
     wordCount: 2

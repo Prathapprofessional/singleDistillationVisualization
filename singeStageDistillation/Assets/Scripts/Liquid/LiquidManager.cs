@@ -51,7 +51,7 @@ public class LiquidManager : MonoBehaviour
 
     public void onSkipButtonPressed()
     {
-
+            
     }
 
     public void onRestartButtonPressed()
