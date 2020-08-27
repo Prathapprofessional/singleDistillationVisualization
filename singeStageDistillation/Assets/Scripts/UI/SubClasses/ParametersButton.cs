@@ -9,8 +9,7 @@ public class ParametersButton : UIObject
 
     public override void MethodsToCallOnPress()
     {
-        _active = !_active; 
-        parameterPanel.SetActive(_active); 
+        parameterPanel.SetActive(true); 
     }
 
     public override void Hide()
@@ -18,6 +17,6 @@ public class ParametersButton : UIObject
         parameterPanel.SetActive(false);
         _active = false;
 
-        base.Hide(); 
+        base.Hide();
     }
 }
