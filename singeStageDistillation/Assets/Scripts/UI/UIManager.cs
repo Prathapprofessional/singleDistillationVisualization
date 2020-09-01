@@ -18,6 +18,8 @@ public class UIManager : MonoBehaviour
     public GameObject rotationJoystick;
     public GameObject translationJoystick;
 
+    public GameObject intermediatePanel;
+
     // Start is called before the first frame update
     void Start()
     {

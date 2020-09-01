@@ -8,6 +8,7 @@ public class ExperimentData : MonoBehaviour
 
     public ExperimentProperties[] data;
     public int totalNumberOfValues;
+    public int stoppageValue;
 
     public float x10 = 0.4f;
     public float x1c = 0.55f;
@@ -50,5 +51,13 @@ public class ExperimentData : MonoBehaviour
             //Reducing x1 
             x1 = x1 - 0.010f;
         }
+        //Setx1c slider values 
+        manager.dataUIManager.x1cSlider.SetMinMax();
+        stoppageValue = totalNumberOfValues - 1;
+    }
+
+    public void SetStoppageValue(int value)
+    {
+        stoppageValue = value;
     }
 }

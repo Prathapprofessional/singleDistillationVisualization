@@ -48,12 +48,12 @@ public class Formulas
 
     public static float NL0(float x1Original, float x1, float x2, float initialVolume)
     {
-        return ((densityMixture(x1,x2) * initialVolume)/ (molarMassMixture(x1, x2)* NLNL0(x1Original, x1)));
+        return (1 / (((x1 * (MolarMassOfBenzene / DensityOfBenzene)) + (x2 * (MolarMassOfToluene / DensityOfToluene))) * NLNL0(x1Original, x1))) * initialVolume;
     }
 
     public static float volume(float x1Original, float x1, float x2, float initialVolume)
     {
-        return ((NL0(x1Original, x1Original, 1- x1Original, initialVolume) * NLNL0(x1Original, x1) * molarMassMixture(x1, x2)) / densityMixture(x1, x2));
+        return (NL0(x1Original, x1Original, 1 - x1Original, initialVolume) * NLNL0(x1Original, x1)) * ((x1 * (MolarMassOfBenzene / DensityOfBenzene)) + (x2 * (MolarMassOfToluene / DensityOfToluene)));
     }
 
     public static float densityMixture(float x1, float x2)

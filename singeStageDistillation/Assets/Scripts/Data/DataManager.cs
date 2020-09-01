@@ -13,6 +13,7 @@ public class DataManager : MonoBehaviour
     int countFrames = 0;
 
     bool _progressSliderClicked = false;
+    public bool _continueExperiment = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,9 +29,17 @@ public class DataManager : MonoBehaviour
             {
                 if (currentDataIndex < manager.experimentData.totalNumberOfValues)
                 {
-                    SetRequired(currentDataIndex);
-                    currentDataIndex++;
-                    countFrames = 0;
+                    if (currentDataIndex <= manager.experimentData.stoppageValue || _continueExperiment)
+                    {
+                        SetRequired(currentDataIndex);
+                        currentDataIndex++;
+                        countFrames = 0;
+                    }
+                    else
+                    {
+                        manager.uIManager.intermediatePanel.SetActive(true);
+                        manager.uIManager.gameObject.GetComponent<CanvasGroup>().interactable = false;
+                    }
                 }
                 else
                 {
@@ -54,6 +63,7 @@ public class DataManager : MonoBehaviour
 
     public void SetEndOfProcessRequired()
     {
+        _continueExperiment = false;
         manager.uIManager.SetEndOfProcessRequired();
         manager.animationManager.SetEndOfProcessRequired();
         manager.liquidManager.SetEndOfProcessRequired();
@@ -69,6 +79,7 @@ public class DataManager : MonoBehaviour
         _dataStarted = false;
         countFrames = 0;
         currentDataIndex = 0;
+        _continueExperiment = false;
     }
 
     public void onSkipButtonPressed()
@@ -86,10 +97,15 @@ public class DataManager : MonoBehaviour
         _dataStarted = true;
     }
 
+    //Also used for stoppageValues 
     public void SetIndexFromSlider(float value)
     {
         currentDataIndex = (int)value;
         _progressSliderClicked = true;
     }
 
+    public void SetIndex(float value)
+    {
+        currentDataIndex = (int)value;
+    }
 }

@@ -22,6 +22,7 @@ public class DataUIManager : MonoBehaviour
     public TextMeshProUGUI x1cCurrentText;
     public TextMeshProUGUI temperatureText;
 
+    public X1CSlider x1cSlider;
     public void onPlayPauseResumeButtonPressed()
     {
 
@@ -62,10 +63,9 @@ public class DataUIManager : MonoBehaviour
         x20Text.text = (1 - value).ToString("0.0");
     }
 
-    public void Setx1c(float value)
+    public void Setx1c(int value)
     {
-        manager.experimentData.x1c = value;
-        x1cText.text = value.ToString("0.00");
+        x1cText.text = manager.experimentData.data[value].GetX1C().ToString("0.00");
     }
 
     public void SetInitialVolume(float value)
