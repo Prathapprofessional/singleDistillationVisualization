@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpriteSelection : MonoBehaviour
 {
     public GameObject mainPanel;
-    public GameObject otherPanel1, otherPanel2, otherPanel3;
+    public GameObject otherPanel1, otherPanel2, otherPanel3, otherPanel4;
     
     private void OnMouseDown()
     {
@@ -13,7 +13,8 @@ public class SpriteSelection : MonoBehaviour
         {
             print("click is active");
             if(mainPanel != null && otherPanel1 != null
-            && otherPanel2 != null && otherPanel3 != null)
+            && otherPanel2 != null && otherPanel3 != null
+            && otherPanel4 != null)
             {
                 //get the status of the panel
                 bool isActive = mainPanel.activeSelf;
@@ -24,6 +25,7 @@ public class SpriteSelection : MonoBehaviour
                     otherPanel1.SetActive(false);
                     otherPanel2.SetActive(false);
                     otherPanel3.SetActive(false);
+                    otherPanel4.SetActive(false);
                 }
                 else
                 {
@@ -31,6 +33,7 @@ public class SpriteSelection : MonoBehaviour
                     otherPanel1.SetActive(false);
                     otherPanel2.SetActive(false);
                     otherPanel3.SetActive(false);
+                    otherPanel4.SetActive(false);
                 }
                 
             }
