@@ -23,7 +23,7 @@ public class TwoDThreeDButton : UIObject
         if (_2d)
         {
             _2d = false;
-            boardUI.SetActive(false);
+            //boardUI.SetActive(false);
             manager.uIManager.rotationJoystick.SetActive(true);
             manager.uIManager.translationJoystick.SetActive(true);
             text2D3D.text = "2D";
@@ -34,7 +34,7 @@ public class TwoDThreeDButton : UIObject
             manager.uIManager.rotationJoystick.SetActive(false);
             manager.uIManager.translationJoystick.SetActive(false);
             text2D3D.text = "3D";
-            boardUI.SetActive(true);
+            //boardUI.SetActive(true);
         }
     }
 }
