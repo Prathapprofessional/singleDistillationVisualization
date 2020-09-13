@@ -10,6 +10,21 @@ public class Mainmenu : MonoBehaviour
 	SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
     }
 
+    public void CheckLab()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +2);
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    }
+
+    public void BackToMainMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
     public void QuitGame()
     {
 	Application.Quit();

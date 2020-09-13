@@ -26,11 +26,13 @@ public class PlayerMove : MonoBehaviour
 
     //For Joystick Movement 
     public Joystick TranslationJoystick;
-    public float joystickSpeed; 
+    public float joystickSpeed;
+    Vector3 originalPosition; 
 
     private void Awake()
     {
         charController = GetComponent<CharacterController>();
+        originalPosition = transform.localPosition; 
     }
 
     private void Update()
@@ -113,4 +115,13 @@ public class PlayerMove : MonoBehaviour
         isJumping = false;
     }
 
+    public void setOriginalPosition()
+    {
+        if (this.gameObject.activeSelf)
+        {
+            charController.enabled = false;
+            transform.localPosition = originalPosition;
+            charController.enabled = true;
+        }
+    }
 }

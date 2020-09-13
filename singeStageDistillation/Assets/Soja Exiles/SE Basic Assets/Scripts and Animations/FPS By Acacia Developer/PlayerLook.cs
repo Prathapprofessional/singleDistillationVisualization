@@ -12,7 +12,7 @@ public class PlayerLook : MonoBehaviour
     private float xAxisClamp;
 
     //For Joystick Movement
-    public Joystick RotationJoystick; 
+    public Joystick RotationJoystick;
 
     private void Awake()
     {
@@ -27,7 +27,8 @@ public class PlayerLook : MonoBehaviour
 
     private void Update()
     {
-        CameraRotation();
+        if(Input.GetMouseButton(1))
+            CameraRotation();
     }
 
     private void CameraRotation()
@@ -73,5 +74,14 @@ public class PlayerLook : MonoBehaviour
         Vector3 eulerRotation = transform.eulerAngles;
         eulerRotation.x = value;
         transform.eulerAngles = eulerRotation;
+    }
+
+    public void setOriginalPosition()
+    {
+        if (this.gameObject.activeSelf)
+        {
+            playerBody.rotation = Quaternion.identity;
+            transform.rotation = Quaternion.identity;
+        }
     }
 }

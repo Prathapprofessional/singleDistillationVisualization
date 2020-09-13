@@ -10,7 +10,15 @@ public class TwoDThreeDButton : UIObject
     public DisplayCamera displayCamera;
     public TextMeshProUGUI text2D3D;
     public GameObject boardUI;
-    private bool _2d = false; 
+    public GameObject fixPosition;
+    public GameObject lessButton;
+
+    public bool _2d = true;
+
+    public void Start()
+    {
+
+    }
 
     public override void MethodsToCallOnPress()
     {
@@ -23,14 +31,19 @@ public class TwoDThreeDButton : UIObject
         if (_2d)
         {
             _2d = false;
+            //fixPosition.SetActive(false);
             //boardUI.SetActive(false);
-            manager.uIManager.rotationJoystick.SetActive(true);
-            manager.uIManager.translationJoystick.SetActive(true);
+            if (!Input.mousePresent)
+            {
+                manager.uIManager.rotationJoystick.SetActive(true);
+                manager.uIManager.translationJoystick.SetActive(true);
+            }
             text2D3D.text = "2D";
         }
         else
         {
             _2d = true;
+            //fixPosition.SetActive(true);
             manager.uIManager.rotationJoystick.SetActive(false);
             manager.uIManager.translationJoystick.SetActive(false);
             text2D3D.text = "3D";
