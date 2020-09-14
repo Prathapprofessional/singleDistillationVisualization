@@ -27,8 +27,17 @@ public class PlayerLook : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetMouseButton(1))
+#if UNITY_ANDROID && !UNITY_EDITOR
+        CameraRotation();
+#endif
+#if UNITY_EDITOR
+        if (Input.GetMouseButton(1))
             CameraRotation();
+#endif
+#if UNITY_STANDALONE
+        if (Input.GetMouseButton(1))
+            CameraRotation();
+#endif
     }
 
     private void CameraRotation()

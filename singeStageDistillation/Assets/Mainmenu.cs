@@ -12,7 +12,7 @@ public class Mainmenu : MonoBehaviour
 
     public void CheckLab()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +2);
+        SceneManager.LoadScene("Lab");
     }
 
     public void StartGame()

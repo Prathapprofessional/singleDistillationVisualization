@@ -46,7 +46,7 @@ public class MoreLess : MonoBehaviour
     {
         menuButton.SetActive(state);
         backButton.SetActive(state);
-        if (twoDthreeDButton.GetComponent<TwoDThreeDButton>()._2d) fixPositionButton.SetActive(state);
+        fixPositionButton.SetActive(state);
         twoDthreeDButton.SetActive(state);
         panelVisibility.SetActive(state);
     }

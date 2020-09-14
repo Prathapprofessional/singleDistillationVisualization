@@ -20,6 +20,8 @@ public class UIManager : MonoBehaviour
 
     public GameObject intermediatePanel;
 
+    public GameObject parametersPanel; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +31,14 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Manager.GetStartedStatus() || Manager.GetPlayingStatus()) //Play
+        {
+            parametersPanel.SetActive(false);
+        }
+        else
+        {
+            parametersPanel.SetActive(true); 
+        }
     }
 
     public void onPlayPauseResumeButtonPressed()
@@ -39,7 +48,8 @@ public class UIManager : MonoBehaviour
             playPauseResumeButton.SwitchPlayPauseIcon();
             stopButton.Show();
             skipButton.Show();
-            parametersButton.Hide();
+            //parametersPanel.SetActive(false);
+            //parametersButton.Hide();
         }
         else if (Manager.GetStartedStatus() & Manager.GetPlayingStatus()) //Pause
         {
@@ -57,8 +67,9 @@ public class UIManager : MonoBehaviour
         playPauseResumeButton.Show();
         stopButton.Hide();
         skipButton.Hide();
-        restartButton.Hide(); 
-        parametersButton.Show();
+        restartButton.Hide();
+        //parametersButton.Show();
+        //parametersPanel.SetActive(true); 
 
         SetProgressSliderFromDataProgress(0);
         progressSlider.Hide(); 

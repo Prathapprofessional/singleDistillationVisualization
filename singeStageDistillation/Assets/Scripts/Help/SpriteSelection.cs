@@ -27,14 +27,14 @@ public class SpriteSelection : MonoBehaviour
                     otherPanel3.SetActive(false);
                     otherPanel4.SetActive(false);
                 }
-                else
+                /*else
                 {
                     mainPanel.SetActive(false);
                     otherPanel1.SetActive(false);
                     otherPanel2.SetActive(false);
                     otherPanel3.SetActive(false);
                     otherPanel4.SetActive(false);
-                }
+                }*/
                 
             }
         }
