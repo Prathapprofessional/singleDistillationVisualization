@@ -8,7 +8,7 @@ public class ExperimentData : MonoBehaviour
 
     public ExperimentProperties[] data;
     public int totalNumberOfValues;
-    public int stoppageValue;
+    public int stoppageValue = 40;
 
     public float x10 = 0.4f;
     public float x1c = 0.55f;
@@ -29,7 +29,7 @@ public class ExperimentData : MonoBehaviour
     public void FindData()
     {
         float x1 = x10;
-        totalNumberOfValues = (int)(x10 / 0.010f) + 1;
+        totalNumberOfValues = 41;
         manager.uIManager.SetMaxOfProgressSlider(totalNumberOfValues);
 
         data = new ExperimentProperties[totalNumberOfValues];
@@ -49,11 +49,10 @@ public class ExperimentData : MonoBehaviour
             data[i] = experimentDataAtThisStage;
 
             //Reducing x1 
-            x1 = x1 - 0.010f;
+            x1 = x1 - (x10 / 40);
         }
         //Setx1c slider values 
         manager.dataUIManager.x1cSlider.SetMinMax();
-        stoppageValue = totalNumberOfValues - 1;
     }
 
     public void SetStoppageValue(int value)

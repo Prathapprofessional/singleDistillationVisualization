@@ -9,10 +9,10 @@ public class JoystickNeedCheckLabScene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!Input.mousePresent)
+        if (Input.mousePresent)
         {
-            rotationJoystick.SetActive(true);
-            translationJoystick.SetActive(true);
+            rotationJoystick.SetActive(false);
+            translationJoystick.SetActive(false);
         }
     }
 }
