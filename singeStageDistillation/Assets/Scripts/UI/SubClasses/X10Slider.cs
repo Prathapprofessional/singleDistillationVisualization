@@ -10,6 +10,7 @@ public class X10Slider : UIObjectParameterSlider
         base.MethodsToCallOnPress(value);
 
         manager.dataUIManager.Setx10(value);
+        manager.dataUIManager.SetTemperatureText(value);
         manager.levelAndColourManager.SetInputLiquidColour(value);
         manager.liquidManager.thermometerLiquid.SetMinLevelAccordingToThermometerSelected(value);
     }

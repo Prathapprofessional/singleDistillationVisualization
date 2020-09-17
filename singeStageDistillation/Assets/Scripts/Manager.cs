@@ -17,8 +17,13 @@ public class Manager : MonoBehaviour
     public LevelAndColourManager levelAndColourManager;
     public LiquidManager liquidManager;
 
-    public ExperimentData experimentData; 
+    public ExperimentData experimentData;
 
+    public void Start()
+    {
+        //_started = false;
+        //_playing = false;
+    }
     public void onPlayPauseResumeButtonPressed()
     {
         animationManager.onPlayPauseResumeButtonPressed();

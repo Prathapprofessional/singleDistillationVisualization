@@ -53,9 +53,7 @@ public class DataUIManager : MonoBehaviour
         NLNL0Text.text = manager.experimentData.data[index].GetNLNL0().ToString("0.00");
         volumeCurrentText.text = manager.experimentData.data[index].GetVolume().ToString("0.00");
         x1cCurrentText.text = manager.experimentData.data[index].GetX1C().ToString("0.00");
-
-   
-            temperatureText.text = manager.experimentData.data[index].GetTemperature().ToString() + "º C";
+        temperatureText.text = manager.experimentData.data[index].GetTemperature().ToString() + "º C";
     }
 
     public void Setx10(float value)
@@ -76,6 +74,10 @@ public class DataUIManager : MonoBehaviour
         volumeText.text = value.ToString("0.0");
     }
 
+    public void SetTemperatureText(float value)
+    {
+        temperatureText.text = (Formulas.TemperatureSetting(value)).ToString() + "º C";
+    }
     public void ReSetData()
     {
         //Experimet Properties
