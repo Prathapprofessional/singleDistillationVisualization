@@ -59,13 +59,13 @@ public class Graph : MonoBehaviour
         //(x1-x0)/(x2-x0) = (y1-y0)/(y2-y0)
         point.x = (((positionX0.localPosition.x - positionOrigin.localPosition.x) * (xCurrent - min)) / (max - min)) + positionOrigin.localPosition.x;
         point.y = (((position0Y.localPosition.y - positionOrigin.localPosition.y) * (yCurrent - min)) / (max - min)) + positionOrigin.localPosition.y;
-
         Vector3[] pointsArray;
         
         points[index].Add(point);
         pointsArray = points[index].ToArray();
         lineRenderer[index].positionCount = pointsArray.Length;
         lineRenderer[index].SetPositions(pointsArray);
+
     }
 
     public void InitializeGraph()
