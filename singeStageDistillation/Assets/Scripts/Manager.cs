@@ -21,8 +21,8 @@ public class Manager : MonoBehaviour
 
     public void Start()
     {
-        //_started = false;
-        //_playing = false;
+        _started = false;
+        _playing = false;
     }
     public void onPlayPauseResumeButtonPressed()
     {
