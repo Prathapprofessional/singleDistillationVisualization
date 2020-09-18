@@ -263,7 +263,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1476473565}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 440423149}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45977bbae16431c46a013576a1aea384, type: 3}
@@ -1345,6 +1345,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &440423149 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2929252283123773939, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+    type: 3}
+  m_PrefabInstance: {fileID: 1476473565}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &464418765
 GameObject:
   m_ObjectHideFlags: 0
@@ -1427,7 +1433,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1046897093}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 891967891}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45977bbae16431c46a013576a1aea384, type: 3}
@@ -2041,6 +2047,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &891967891 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2929252283123773939, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+    type: 3}
+  m_PrefabInstance: {fileID: 1046897093}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &898602774
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3285,6 +3297,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1231324447}
+  - component: {fileID: 1231324448}
   m_Layer: 5
   m_Name: JoyStick
   m_TagString: Untagged
@@ -3313,6 +3326,20 @@ RectTransform:
   m_AnchoredPosition: {x: 2.9213, y: 3.7178}
   m_SizeDelta: {x: 1977.4971, y: 1044.2703}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1231324448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231324446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 626b88eaefe64fd4da3fd752efb25301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationJoystick: {fileID: 440423149}
+  translationJoystick: {fileID: 891967891}
 --- !u!1 &1247327624
 GameObject:
   m_ObjectHideFlags: 0

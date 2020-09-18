@@ -112,7 +112,7 @@ public class InputLiquid : Liquid
             CalculateCurrentLevel();
 
             //Boiling Liquid
-            renderLiquid.material.SetFloat("_RimPower", rimPowerValue);
+            /*renderLiquid.material.SetFloat("_RimPower", rimPowerValue);
             renderLiquid.material.SetFloat("_Rim", rimValue);
             if (increasinRimLine)
             {
@@ -158,7 +158,7 @@ public class InputLiquid : Liquid
                 {
                     increasinFoamLine = true;
                 }
-            }
+            }*/
 
             if (countFrames >= timeBetween)
             {
