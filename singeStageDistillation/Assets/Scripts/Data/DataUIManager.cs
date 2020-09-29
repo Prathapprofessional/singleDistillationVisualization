@@ -26,6 +26,12 @@ public class DataUIManager : MonoBehaviour
     public X10Slider x10Slider;
     public VolumeSlider volumeSlider;
 
+    //PieChart
+    public PieChart liquidPhase;
+    public PieChart vapourPhase;
+    public PieChart outputPhase;
+    public PieChartManager pieChartManager;
+
     public void onPlayPauseResumeButtonPressed()
     {
 
@@ -57,6 +63,13 @@ public class DataUIManager : MonoBehaviour
         volumeCurrentText.text = manager.experimentData.data[index].GetVolume().ToString("0.00");
         x1cCurrentText.text = manager.experimentData.data[index].GetX1C().ToString("0.00");
         temperatureText.text = manager.experimentData.data[index].GetTemperature().ToString() + "º C";
+
+        if (pieChartManager.visibilityState)
+        {
+            liquidPhase.SetValues(manager.experimentData.data[index].GetX1(), manager.experimentData.data[index].GetX2());
+            vapourPhase.SetValues(manager.experimentData.data[index].GetY1(), manager.experimentData.data[index].GetY2());
+            outputPhase.SetValues(manager.experimentData.data[index].GetX1C(), manager.experimentData.data[index].GetX2C());
+        }
     }
 
     public void Setx10(float value)
@@ -64,7 +77,8 @@ public class DataUIManager : MonoBehaviour
         manager.experimentData.x10 = value;
         x10Text.text = value.ToString("0.0");
         x20Text.text = (1 - value).ToString("0.0");
-        x10Slider.currentText.text = value.ToString("0.0"); 
+        x10Slider.currentText.text = value.ToString("0.0");
+        liquidPhase.SetValues(value, 1-value);
     }
 
     public void Setx1c(int value)
@@ -94,5 +108,12 @@ public class DataUIManager : MonoBehaviour
         NLNL0Text.text = "";
         volumeCurrentText.text = "";
         x1cCurrentText.text = "";
+
+        if (pieChartManager.visibilityState)
+        {
+            liquidPhase.SetValues(manager.experimentData.data[0].GetX1(), manager.experimentData.data[0].GetX2());
+            vapourPhase.SetValues(0.00f, 0.00f);
+            outputPhase.SetValues(0.00f, 0.00f);
+        }
     }
 }

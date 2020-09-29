@@ -13,6 +13,7 @@ public class MoreLess : MonoBehaviour
     public GameObject backButton;
     public GameObject fixPositionButton;
     public GameObject twoDthreeDButton;
+    public GameObject cameraSettingsButton;
     public GameObject panelVisibility;
     // Start is called before the first frame update
     void Start()
@@ -49,5 +50,6 @@ public class MoreLess : MonoBehaviour
         fixPositionButton.SetActive(state);
         twoDthreeDButton.SetActive(state);
         panelVisibility.SetActive(state);
+        cameraSettingsButton.SetActive(state); 
     }
 }

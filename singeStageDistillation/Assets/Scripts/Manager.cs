@@ -16,6 +16,7 @@ public class Manager : MonoBehaviour
     public GraphManager graphManager;
     public LevelAndColourManager levelAndColourManager;
     public LiquidManager liquidManager;
+    public CameraManager cameraManager; 
 
     public ExperimentData experimentData;
 
@@ -33,6 +34,7 @@ public class Manager : MonoBehaviour
         graphManager.onPlayPauseResumeButtonPressed();
         levelAndColourManager.onPlayPauseResumeButtonPressed();
         liquidManager.onPlayPauseResumeButtonPressed();
+        cameraManager.onPlayPauseResumeButtonPressed(); 
 
         if (!_started) //Play
         {
@@ -58,6 +60,7 @@ public class Manager : MonoBehaviour
         graphManager.onStopButtonPressed();
         levelAndColourManager.onStopButtonPressed();
         liquidManager.onStopButtonPressed();
+        cameraManager.onStopButtonPressed(); 
 
         _started = false;
         _playing = false;
@@ -72,6 +75,7 @@ public class Manager : MonoBehaviour
         graphManager.onSkipButtonPressed();
         levelAndColourManager.onSkipButtonPressed();
         liquidManager.onSkipButtonPressed();
+        cameraManager.onSkipButtonPressed(); 
     }
 
     public void onRestartButtonPressed()
@@ -83,6 +87,7 @@ public class Manager : MonoBehaviour
         graphManager.onRestartButtonPressed();
         levelAndColourManager.onRestartButtonPressed();
         liquidManager.onRestartButtonPressed();
+        cameraManager.onRestartButtonPressed(); 
     }
 
     public static bool GetStartedStatus()

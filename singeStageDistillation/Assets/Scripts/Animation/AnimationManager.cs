@@ -44,15 +44,20 @@ public class AnimationManager : MonoBehaviour
 
             //End Of Animation - Data Started 
             manager.dataManager.StartData();
+
             //Hide skip button when animation completes - Data starts
             manager.uIManager.skipButton.Hide();
             manager.uIManager.progressSlider.Show();
+
+            //SetCamerBackToOriginalSpot 
+            manager.cameraManager.SetBackPosition();
         }
         else
         {
             if (_allAnimationsNotStarted & Manager.GetPlayingStatus())
             {
                 animations[currentAnimationIndex].Play();
+                manager.cameraManager.SetNextIndex(currentAnimationIndex); 
             }
             currentAnimationIndex++; 
         }

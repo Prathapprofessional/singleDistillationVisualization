@@ -16,7 +16,6 @@ public class DisplayCamera : MonoBehaviour
         //Get Camera Listeners
         firstPersonAudioLis = firstPersonCamera.GetComponent<AudioListener>();
         mainCameraAudioLis = mainCamera.GetComponent<AudioListener>();
-
     }
 
     public void displayCamera()
