@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; 
+using UnityEngine.UI;
+using TMPro; 
 
 public class PlayPauseResumeButton : UIObject
 {
@@ -14,6 +15,7 @@ public class PlayPauseResumeButton : UIObject
     public Image image;
     public Sprite playIcon;
     public Sprite pauseIcon;
+    public TextMeshProUGUI tooltip;
 
     public override void MethodsToCallOnPress()
     {
@@ -26,11 +28,13 @@ public class PlayPauseResumeButton : UIObject
         if (_playing)
         {
             image.sprite = playIcon;
+            tooltip.text = "Start Process"; 
             _playing = false;
         }
         else if (!_playing)
         {
             image.sprite = pauseIcon;
+            tooltip.text = "Pause Process";
             _playing = true;
         }
     }
