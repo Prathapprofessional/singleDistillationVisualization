@@ -5,13 +5,13 @@ using UnityEngine;
 public class FixPositionButton : UIObject
 {
     public Manager manager;
-    public ZoomInZoomOut ZoomInZoomOut;
+    //public ZoomInZoomOut ZoomInZoomOut;
     public PlayerLook playerLook;
     public PlayerMove playerMove;
 
     public override void MethodsToCallOnPress()
     {
-        ZoomInZoomOut.setOriginalPosition();
+        manager.cameraManager.setOriginalPosition();
         playerLook.setOriginalPosition();
         playerMove.setOriginalPosition(); 
     }

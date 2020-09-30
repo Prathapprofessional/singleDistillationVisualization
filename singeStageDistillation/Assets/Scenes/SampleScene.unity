@@ -7427,7 +7427,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 1496751992}
-  ZoomInZoomOut: {fileID: 0}
   playerLook: {fileID: 0}
   playerMove: {fileID: 0}
 --- !u!114 &184466078
@@ -37202,7 +37201,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 1496751992}
-  ZoomInZoomOut: {fileID: 0}
   playerLook: {fileID: 1003813919}
   playerMove: {fileID: 1914221712}
 --- !u!114 &1075131323
@@ -82063,7 +82061,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 1496751992}
-  displayCamera: {fileID: 0}
+  displayCamera: {fileID: 1399899671}
   text2D3D: {fileID: 177917208}
   boardUI: {fileID: 3998597414718833186}
   fixPosition: {fileID: 1075131320}
