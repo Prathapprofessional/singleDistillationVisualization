@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TabGroup : MonoBehaviour
 {
-    public List<TabButton> tabButtons;
+    private List<TabButton> tabButtons;
     public Sprite tabIdle;
     public Sprite tabHover;
     public Sprite tabActive;
