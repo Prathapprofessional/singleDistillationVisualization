@@ -30,6 +30,7 @@ public class BoardUIVisibility : MonoBehaviour
         {
             canvasGroup.alpha = 1;
             canvasGroup.interactable = true;
+            canvasGroup.blocksRaycasts = true; 
 
             foreach (LineRenderer line in lines)
             {
@@ -38,6 +39,7 @@ public class BoardUIVisibility : MonoBehaviour
         }
         else
         {
+            canvasGroup.blocksRaycasts = false; 
             canvasGroup.alpha = 0;
             canvasGroup.interactable = false;
 

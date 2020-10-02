@@ -217,6 +217,8 @@ public class CameraManager : MonoBehaviour
         {
             targetPosition = originalPosition;
             targetOrthographicSize = originalOrthographicSize;
+            movedPosition = originalPosition;
+            movedOrthographicSize = originalOrthographicSize; 
         }
     }
 
