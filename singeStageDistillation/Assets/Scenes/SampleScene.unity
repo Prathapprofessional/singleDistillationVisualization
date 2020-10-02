@@ -57048,7 +57048,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The heater used in the experiment is a Bunsen burner. The burner heats
+  m_text: The Heater used in the experiment is a Bunsen burner. The burner heats
     up the Distillation column.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -86296,7 +86296,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The Liebig condenser is used to cool and condensate the vapor that flows
+  m_text: The Liebig Condenser is used to cool and condensate the vapor that flows
     through the inner tube from the distillation flask towards the receiving flask.
     The two hoses connected to the condenser circulate water as the cooling medium.
   m_isRightToLeft: 0
@@ -86812,7 +86812,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'The thermometer is used to control the temperature of the mixture. It
+  m_text: 'The Thermometer is used to control the temperature of the mixture. It
     can be used for the correlation of temperature and composition. '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -88677,7 +88677,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The Receiving flask collects the product of the distillation process.
+  m_text: The Receiving flask collects the product of the Distillation process.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
