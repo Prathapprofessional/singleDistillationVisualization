@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+/// <summary>
+/// Singleton manager class which controls the experimental data used in the process  
+/// </summary>
 public class DataManager : MonoBehaviour
 {
     public Manager manager;

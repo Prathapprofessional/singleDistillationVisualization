@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Molar concentration graph 
+/// </summary>
 public class DataGraph : Graph
 {
-
     public override void SetUpForCalculation(int index)
     {
         CalculateLine(manager.experimentData.data[index].GetNLNL0(), manager.experimentData.data[index].GetX1(), 0);

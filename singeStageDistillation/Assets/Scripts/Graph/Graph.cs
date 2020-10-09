@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Graph Entity Class - Every graph  is derived from this class 
+/// Derived from this class the data update is carried out according to the state if data provided 
+/// </summary>
 public class Graph : MonoBehaviour
 {
     public Manager manager;

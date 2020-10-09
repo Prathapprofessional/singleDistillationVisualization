@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Required reference positions 
+/// </summary>
 public class ReferencePositions : MonoBehaviour
 {
     public Transform distillationFlaskTop;

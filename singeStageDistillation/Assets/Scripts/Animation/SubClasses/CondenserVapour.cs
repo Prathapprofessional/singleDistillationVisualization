@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Vapour in the condenser effect 
+/// </summary>
 public class CondenserVapour : AnimationEffect
 {
     public override void SetAmountAccordingToData(int index)

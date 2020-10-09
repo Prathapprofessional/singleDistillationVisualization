@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Hide or unhide all the sprites when needed  
+/// </summary>
 public class spriteOpener : MonoBehaviour
 {
     public GameObject sprite1, sprite2, sprite3, sprite4, sprite5;

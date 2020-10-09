@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+/// <summary>
+/// Singleton manager class which controls the data displayed 
+/// </summary>
 public class DataUIManager : MonoBehaviour
 {
     public Manager manager; 

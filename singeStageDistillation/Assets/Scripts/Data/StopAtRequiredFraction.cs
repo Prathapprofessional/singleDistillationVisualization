@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles stop or continue the process once threshold is reached 
+/// </summary>
 public class StopAtRequiredFraction : MonoBehaviour
 {
     public Manager manager;

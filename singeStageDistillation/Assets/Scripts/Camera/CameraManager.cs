@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI; 
+using UnityEngine.UI;
 
+/// <summary>
+/// Singleton manager class which controls the camera 
+/// </summary>
 public class CameraManager : MonoBehaviour
 {
     public Transform[] animationPositions;

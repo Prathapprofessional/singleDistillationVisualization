@@ -4,6 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// UIObject Entity Class - Every UIObject effect is derived from this class 
+/// Derived from this class the state rquired by ineracting with the UI 
+/// is automatically communicated through the manager to the entire application
+/// </summary>
 public class UIObject: MonoBehaviour,IPointerDownHandler,IPointerUpHandler
 {
     protected bool _pressed = false;

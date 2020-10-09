@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Liquid bubble effect falling down  
+/// </summary>
 public class CondenserFormationDown : AnimationEffect
 {
     public override void SetAmountAccordingToData(int index)

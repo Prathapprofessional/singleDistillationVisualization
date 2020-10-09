@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Singleton manager class which controls the classes derived from UIObject entity class 
+/// </summary>
 public class UIManager : MonoBehaviour
 {
     public Manager manager; 

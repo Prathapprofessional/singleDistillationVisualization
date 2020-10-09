@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Property class which holds all the properties 
+/// </summary>
 public class ExperimentProperties 
 {
     float x1;

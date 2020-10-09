@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Singleton manager class which controls the classes derived from Liquid entity class 
+/// </summary>
 public class LiquidManager : MonoBehaviour
 {
     public InputLiquid inputLiquid;

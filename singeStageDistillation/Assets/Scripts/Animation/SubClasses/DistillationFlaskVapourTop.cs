@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Vapour passing up the distillation vapour effect 
+/// </summary>
 public class DistillationFlaskVapourTop : AnimationEffect
 {
     public override void SetAmountAccordingToData(int index)

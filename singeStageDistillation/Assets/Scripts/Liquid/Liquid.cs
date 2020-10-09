@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Liquid Entity Class - Every Liquid is derived from this class 
+/// </summary>
 public class Liquid: MonoBehaviour
 {
     protected bool liquidFilled = false;

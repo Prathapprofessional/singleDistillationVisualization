@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Vapour in the distillation flask 
+/// </summary>
 public class DistillationFlaskVapour : AnimationEffect
 {
 

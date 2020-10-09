@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Droplet falling down to the beaker effect 
+/// </summary>
 public class Drops : AnimationEffect
 {
     public override void SetAmountAccordingToData(int index)

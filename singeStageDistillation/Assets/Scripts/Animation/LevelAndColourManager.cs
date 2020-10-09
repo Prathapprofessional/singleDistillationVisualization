@@ -2,10 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// To control the level and colour of all the components in the applciation 
+/// </summary>
 public class LevelAndColourManager : MonoBehaviour
 {
+    /// <summary>
+    /// Global singleton manager 
+    /// </summary>
     public Manager manager; 
 
+    //Required components 
     public InputLiquid inputLiquid;
     public OutputLiquid outputLiquid;
     public ThermometerLiquid thermometerLiquid;
@@ -23,18 +30,7 @@ public class LevelAndColourManager : MonoBehaviour
     public Renderer dropletShader;
     public Renderer splashShader;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    //Methods each manager should implement 
     public void onPlayPauseResumeButtonPressed()
     {
         if (!Manager.GetStartedStatus()) //Play
@@ -81,6 +77,7 @@ public class LevelAndColourManager : MonoBehaviour
 
     }
 
+    //Sets the colour 
     public void SetLevelAndColour(int index)
     {
         SetAccordingToData(manager.experimentData.x10,

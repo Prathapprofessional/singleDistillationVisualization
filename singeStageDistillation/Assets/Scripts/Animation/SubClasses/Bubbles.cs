@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Air bubble effect to mimic boiling 
+/// </summary>
 public class Bubbles : AnimationEffect
 {
     public override void SetAmountAccordingToData(int index)

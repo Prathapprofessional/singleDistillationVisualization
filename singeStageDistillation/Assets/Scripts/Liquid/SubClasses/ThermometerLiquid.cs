@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Thermometer Liquid 
+/// </summary>
 public class ThermometerLiquid : Liquid
 {
     protected float liquidLevelApplicationMax;

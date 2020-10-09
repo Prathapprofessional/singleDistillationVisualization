@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Condenser Liquid 
+/// </summary>
 public class CondenserLiquid : Liquid
 {
 

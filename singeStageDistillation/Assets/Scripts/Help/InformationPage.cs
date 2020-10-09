@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Controls each of the model's description page 
+/// </summary>
 public class InformationPage : MonoBehaviour
 {
     public GameObject informationPanel;

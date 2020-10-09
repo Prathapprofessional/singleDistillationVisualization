@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Volume Graph 
+/// </summary>
 public class VolumeGraph : Graph
 {
     public override void SetUpForCalculation(int index)

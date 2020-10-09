@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Distillation flask Liquid 
+/// </summary>
 public class InputLiquid : Liquid
 {
     protected float liquidLevelOriginalMin;

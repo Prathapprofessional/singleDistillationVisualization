@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Selection of the sprite which is placed beside 
+/// each model to operate description panel 
+/// </summary>
 public class SpriteSelection : MonoBehaviour
 {
     public GameObject mainPanel;

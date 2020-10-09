@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// ExperimentData calculated the data required 
+/// </summary>
 public class ExperimentData : MonoBehaviour
 {
     public Manager manager; 

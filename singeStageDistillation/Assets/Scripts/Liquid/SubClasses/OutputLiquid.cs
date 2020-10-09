@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Beaker Liquid 
+/// </summary>
 public class OutputLiquid : Liquid
 {
     protected float liquidLevelOriginalMin;

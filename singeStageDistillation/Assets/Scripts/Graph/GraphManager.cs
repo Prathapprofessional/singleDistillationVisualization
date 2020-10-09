@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Singleton manager class which controls the classes derived from Graph entity class 
+/// </summary>
 public class GraphManager : MonoBehaviour
 {
     public VolumeGraph volumeGraph;

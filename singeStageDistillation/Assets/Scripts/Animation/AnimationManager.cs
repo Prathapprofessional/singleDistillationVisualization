@@ -2,24 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Singleton manager class which controls the classes derived from AnimationEffect entity class 
+/// </summary>
 public class AnimationManager : MonoBehaviour
 {
+    /// <summary>
+    /// Global singleton manager 
+    /// </summary>
     public Manager manager;
 
-    //Related to Particle Effects
+    /// <summary>
+    /// Stores all the animation effects  
+    /// </summary>
     public AnimationEffect[] animations;
 
-    bool _allAnimationsNotStarted = false; //StatusOfAllAnimation
+    /// <summary>
+    /// Status Of All Animation
+    /// </summary>
+    bool _allAnimationsNotStarted = false; 
 
     //Related to starting each animation effect 
     int countFrames = 301; 
     int currentAnimationIndex = 0;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -63,7 +68,7 @@ public class AnimationManager : MonoBehaviour
         }
     }
 
-    //Methods Related To Button Press
+    //Methods each manager should implement 
     public void onPlayPauseResumeButtonPressed()
     {
         if (!Manager.GetStartedStatus()) //Play

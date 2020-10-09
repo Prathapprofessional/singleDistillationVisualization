@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Splash effect after the drops burst 
+/// </summary>
 public class Splash : AnimationEffect
 {
     // Start is called before the first frame update

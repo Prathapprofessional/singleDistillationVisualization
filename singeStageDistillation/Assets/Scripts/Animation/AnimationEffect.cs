@@ -2,37 +2,46 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Animation Entity Class - Every animation effect is derived from this class 
+/// Derived from this class is automatically played, paused and resumed when necessary 
+/// </summary>
 public class AnimationEffect : MonoBehaviour
 {
+    /// <summary>
+    /// Particle system representing the animation 
+    /// </summary>
     public ParticleSystem particleSystem;
-    public Manager manager; 
 
+    /// <summary>
+    /// Global singleton manager  
+    /// </summary>
+    public Manager manager;
+
+    //To control the particles according to the data 
     public int minEmission = 0;
     public int maxEmission = 0;
-
     public int minParticles = 0;
     public int maxParticles = 0;
 
+    /// <summary>
+    /// Bool value to state whether animation is playing or not 
+    /// </summary>
     protected bool status = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    /// <summary>
+    /// Play the Effect 
+    /// </summary>
     public void Play()
     {
         particleSystem.Play();
         status = true;
     }
 
+    /// <summary>
+    /// Play the Effect only if not playing 
+    /// </summary>
     public void PlayIfNotPlaying()
     {
         if (!particleSystem.isPlaying)
@@ -43,6 +52,9 @@ public class AnimationEffect : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Pause the Effect 
+    /// </summary>
     public void Pause()
     {
         if (particleSystem.isPlaying)
@@ -51,6 +63,9 @@ public class AnimationEffect : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Resume the Effect 
+    /// </summary>
     public void Resume()
     {
         if (status)
@@ -59,6 +74,9 @@ public class AnimationEffect : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Stop the Effect 
+    /// </summary>
     public void Stop()
     {
         particleSystem.Play();
@@ -66,6 +84,9 @@ public class AnimationEffect : MonoBehaviour
         status = false; 
     }
 
+    /// <summary>
+    /// Set size according to the data 
+    /// </summary>
     public virtual void SetAmountAccordingToData(int index)
     {
 
