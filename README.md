@@ -12,7 +12,7 @@ Download the apk file from the link and installed on the mobile device.
 **Tool Suite**
 
 - **Unity and C#:** The application was developed using Unity3D version 2019.3.12. Unity 3D is a cross platform game engine, such that we have support for both Windows and Android. For scripting we used C#. We maintained code under version C# 5.0 and .NET Framework 4.5.
-- **Blender: **We used Blender 2.8 to model the entire apparatus. We could export the model to .fbx format which is the native format used in Unity3D.
+- **Blender:** We used Blender 2.8 to model the entire apparatus. We could export the model to .fbx format which is the native format used in Unity3D.
 
 **Pattern **
 
