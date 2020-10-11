@@ -28,7 +28,14 @@ public class PlayPauseResumeButton : UIObject
         if (_playing)
         {
             image.sprite = playIcon;
-            tooltip.text = "Start Process"; 
+            if (Manager.GetStartedStatus())
+            {
+                tooltip.text = "Resume Process";
+            }
+            else
+            {
+                tooltip.text = "Start Process";
+            }
             _playing = false;
         }
         else if (!_playing)
@@ -43,6 +50,7 @@ public class PlayPauseResumeButton : UIObject
     public void SwitchToPlayIcon()
     {
         image.sprite = playIcon;
+        tooltip.text = "Start Process";
         _playing = false;
     }
 
