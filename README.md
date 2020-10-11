@@ -5,9 +5,9 @@ The project is an application available for Windows and Android that focuses on 
 **Installation and Configuration**
 
 - **Window** 
-Download the zip file from the link. The .exe file will be available in the extract which can be double clicked to start the application. 
+Download the zip file from the [link](https://drive.google.com/file/d/1Zc5kp15vLvuRqzdlTEtgxVSe599woRj2/view?usp=sharing). The .exe file will be available in the extract which can be double clicked to start the application. 
 - **Android** 
-Download the apk file from the link and installed on the mobile device. 
+Download the apk file from the [link](https://drive.google.com/file/d/1vSJOUrhEsf5WeOR-YOffTLnKKs1_QJxi/view?usp=sharing) and installed on the mobile device. 
 
 **Tool Suite**
 
@@ -22,5 +22,5 @@ Unity is based on the Entity Component System(ECS) pattern. Entity refers to an 
 
 - Place the new model in the _LAB_ scene
 - Place a button _START_ at the bottom of the model
-- Add the function 
+- Add the the scene to the function _StartGame_ in the _MainMenu_ script
 - The new scene would be started on pressing press and has no other dependencies. The scene could be designed anyway. 
