@@ -7,7 +7,7 @@ The project is an application available for Windows and Android that focuses on 
 - **Window** 
 Download the zip file from the [link](https://drive.google.com/file/d/1Zc5kp15vLvuRqzdlTEtgxVSe599woRj2/view?usp=sharing). The .exe file will be available in the extract which can be double clicked to start the application. 
 - **Android** 
-Download the apk file from the [link](https://drive.google.com/file/d/1vSJOUrhEsf5WeOR-YOffTLnKKs1_QJxi/view?usp=sharing) and installed on the mobile device. 
+Download the apk file from the [link](https://drive.google.com/file/d/1vSJOUrhEsf5WeOR-YOffTLnKKs1_QJxi/view?usp=sharing) and install it on the mobile device. 
 
 **Tool Suite**
 
