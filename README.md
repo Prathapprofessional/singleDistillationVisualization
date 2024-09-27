@@ -1,6 +1,6 @@
 **Project Outline**
  
-The project is an application available for Windows and Android that focuses on the realistic visualisation of the chemical processes, Single Stage Distillation. The visualisation is enhanced by graphical representations and supported by textual descriptions. The main motive of the project is to help the user visualise this process and at the same time give the user in-depth information about the execution of the process including the activities that happen at the back end give the user a good learning experience.
+The Team project is an application available for Windows and Android that focuses on the realistic visualisation of the chemical processes, Single Stage Distillation. The visualisation is enhanced by graphical representations and supported by textual descriptions. The main motive of the project is to help the user visualise this process and at the same time give the user in-depth information about the execution of the process including the activities that happen at the back end give the user a good learning experience.
 
 **Installation and Configuration**
 
